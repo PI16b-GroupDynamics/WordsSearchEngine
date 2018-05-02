@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.OriginalText = new System.Windows.Forms.RichTextBox();
+            this.FoundWords = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьИзФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,43 +49,43 @@
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.LengthRange = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.LengthRangeCriteria = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.EnglishWordsCriteria = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.SearchInFilesCriteria = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.SearchDirectory = new System.Windows.Forms.TextBox();
+            this.Browse = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // OriginalText
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 39);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(468, 337);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.OriginalText.Location = new System.Drawing.Point(12, 39);
+            this.OriginalText.Name = "OriginalText";
+            this.OriginalText.Size = new System.Drawing.Size(468, 337);
+            this.OriginalText.TabIndex = 0;
+            this.OriginalText.Text = "";
             // 
-            // richTextBox2
+            // FoundWords
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(486, 39);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBox2.Size = new System.Drawing.Size(147, 337);
-            this.richTextBox2.TabIndex = 1;
-            this.richTextBox2.Text = "";
+            this.FoundWords.Location = new System.Drawing.Point(486, 39);
+            this.FoundWords.Name = "FoundWords";
+            this.FoundWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.FoundWords.Size = new System.Drawing.Size(147, 337);
+            this.FoundWords.TabIndex = 1;
+            this.FoundWords.Text = "";
             // 
             // menuStrip1
             // 
@@ -194,23 +194,23 @@
             this.groupBox1.Controls.Add(this.checkBox7);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.checkBox6);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.LengthRange);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.checkBox5);
+            this.groupBox1.Controls.Add(this.LengthRangeCriteria);
             this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Controls.Add(this.checkBox3);
+            this.groupBox1.Controls.Add(this.EnglishWordsCriteria);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Location = new System.Drawing.Point(641, 43);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(180, 234);
+            this.groupBox1.Size = new System.Drawing.Size(180, 247);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Критерии поиска";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(33, 203);
+            this.textBox4.Location = new System.Drawing.Point(33, 202);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(138, 20);
             this.textBox4.TabIndex = 18;
@@ -218,7 +218,7 @@
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(8, 180);
+            this.checkBox7.Location = new System.Drawing.Point(6, 180);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(111, 17);
             this.checkBox7.TabIndex = 17;
@@ -235,19 +235,19 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(7, 154);
+            this.checkBox6.Location = new System.Drawing.Point(6, 154);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(118, 17);
             this.checkBox6.TabIndex = 15;
             this.checkBox6.Text = "Комбинация букв:";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // LengthRange
             // 
-            this.textBox2.Location = new System.Drawing.Point(104, 123);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(59, 20);
-            this.textBox2.TabIndex = 14;
+            this.LengthRange.Location = new System.Drawing.Point(104, 123);
+            this.LengthRange.Name = "LengthRange";
+            this.LengthRange.Size = new System.Drawing.Size(59, 20);
+            this.LengthRange.TabIndex = 14;
             // 
             // textBox1
             // 
@@ -256,15 +256,15 @@
             this.textBox1.Size = new System.Drawing.Size(59, 20);
             this.textBox1.TabIndex = 13;
             // 
-            // checkBox5
+            // LengthRangeCriteria
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 126);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(80, 17);
-            this.checkBox5.TabIndex = 12;
-            this.checkBox5.Text = "Диапазон:";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.LengthRangeCriteria.AutoSize = true;
+            this.LengthRangeCriteria.Location = new System.Drawing.Point(6, 126);
+            this.LengthRangeCriteria.Name = "LengthRangeCriteria";
+            this.LengthRangeCriteria.Size = new System.Drawing.Size(80, 17);
+            this.LengthRangeCriteria.TabIndex = 12;
+            this.LengthRangeCriteria.Text = "Диапазон:";
+            this.LengthRangeCriteria.UseVisualStyleBackColor = true;
             // 
             // checkBox4
             // 
@@ -276,15 +276,15 @@
             this.checkBox4.Text = "Длина слова:";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // EnglishWordsCriteria
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(6, 73);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(119, 17);
-            this.checkBox3.TabIndex = 10;
-            this.checkBox3.Text = "Английские слова";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.EnglishWordsCriteria.AutoSize = true;
+            this.EnglishWordsCriteria.Location = new System.Drawing.Point(6, 73);
+            this.EnglishWordsCriteria.Name = "EnglishWordsCriteria";
+            this.EnglishWordsCriteria.Size = new System.Drawing.Size(119, 17);
+            this.EnglishWordsCriteria.TabIndex = 10;
+            this.EnglishWordsCriteria.Text = "Английские слова";
+            this.EnglishWordsCriteria.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
@@ -316,22 +316,21 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // checkBox8
+            // SearchInFilesCriteria
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(5, 19);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(112, 17);
-            this.checkBox8.TabIndex = 19;
-            this.checkBox8.Text = "Указать каталог";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.SearchInFilesCriteria.AutoSize = true;
+            this.SearchInFilesCriteria.Location = new System.Drawing.Point(8, 21);
+            this.SearchInFilesCriteria.Name = "SearchInFilesCriteria";
+            this.SearchInFilesCriteria.Size = new System.Drawing.Size(115, 17);
+            this.SearchInFilesCriteria.TabIndex = 19;
+            this.SearchInFilesCriteria.Text = "Найти в каталоге";
+            this.SearchInFilesCriteria.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.checkBox8);
+            this.groupBox2.Controls.Add(this.SearchDirectory);
+            this.groupBox2.Controls.Add(this.Browse);
+            this.groupBox2.Controls.Add(this.SearchInFilesCriteria);
             this.groupBox2.Location = new System.Drawing.Point(639, 275);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(182, 72);
@@ -339,30 +338,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Поиск в файлах";
             // 
-            // textBox5
+            // SearchDirectory
             // 
-            this.textBox5.Location = new System.Drawing.Point(54, 44);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(119, 20);
-            this.textBox5.TabIndex = 22;
+            this.SearchDirectory.Location = new System.Drawing.Point(6, 42);
+            this.SearchDirectory.Name = "SearchDirectory";
+            this.SearchDirectory.Size = new System.Drawing.Size(140, 20);
+            this.SearchDirectory.TabIndex = 22;
             // 
-            // label1
+            // Browse
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Путь:";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(121, 15);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(55, 23);
-            this.button5.TabIndex = 20;
-            this.button5.Text = "Обзор...";
-            this.button5.UseVisualStyleBackColor = true;
+            this.Browse.Location = new System.Drawing.Point(152, 39);
+            this.Browse.Name = "Browse";
+            this.Browse.Size = new System.Drawing.Size(24, 23);
+            this.Browse.TabIndex = 20;
+            this.Browse.Text = "...";
+            this.Browse.UseVisualStyleBackColor = true;
+            this.Browse.Click += new System.EventHandler(this.Browse_Click);
             // 
             // button3
             // 
@@ -388,6 +379,12 @@
             this.toolTip1.SetToolTip(this.button6, "Загрузить их файла");
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // FolderBrowserDialog
+            // 
+            this.FolderBrowserDialog.Description = "Определение каталога для поиска слов в файлах";
+            this.FolderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.FolderBrowserDialog.ShowNewFolderButton = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,8 +396,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.FoundWords);
+            this.Controls.Add(this.OriginalText);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button4);
             this.MainMenuStrip = this.menuStrip1;
@@ -419,8 +416,8 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox OriginalText;
+        private System.Windows.Forms.RichTextBox FoundWords;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
@@ -428,9 +425,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox LengthRangeCriteria;
         private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox EnglishWordsCriteria;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button4;
@@ -438,13 +435,12 @@
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox LengthRange;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox SearchInFilesCriteria;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox SearchDirectory;
+        private System.Windows.Forms.Button Browse;
         private System.Windows.Forms.ToolStripMenuItem описаниеПрогграммыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem загрузитьИзФайлаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьВФайлToolStripMenuItem;
@@ -454,6 +450,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripMenuItem параметрыToolStripMenuItem;
+        private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog;
     }
 }
 

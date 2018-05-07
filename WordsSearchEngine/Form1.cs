@@ -389,6 +389,7 @@ namespace WordsSearchEngine
             checkBox7.Enabled = false;
         }
 
+<<<<<<< HEAD
         private void SearchInFiles()
         {
             List<string> files = Directory.GetFiles(SearchDirectory.Text).ToList();
@@ -406,6 +407,16 @@ namespace WordsSearchEngine
             {
                 SearchDirectory.Text = FolderBrowserDialog.SelectedPath;
             }
+=======
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+>>>>>>> 64f5a308073fd81b1a16d516f318c502c01d7066
         }
     }
 }

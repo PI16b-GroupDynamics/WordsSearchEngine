@@ -126,6 +126,7 @@
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // настройкиToolStripMenuItem
             // 
@@ -138,7 +139,7 @@
             // параметрыToolStripMenuItem
             // 
             this.параметрыToolStripMenuItem.Name = "параметрыToolStripMenuItem";
-            this.параметрыToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.параметрыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.параметрыToolStripMenuItem.Text = "Параметры";
             this.параметрыToolStripMenuItem.Click += new System.EventHandler(this.параметрыToolStripMenuItem_Click);
             // 
@@ -154,13 +155,13 @@
             // описаниеПрогграммыToolStripMenuItem
             // 
             this.описаниеПрогграммыToolStripMenuItem.Name = "описаниеПрогграммыToolStripMenuItem";
-            this.описаниеПрогграммыToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.описаниеПрогграммыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.описаниеПрогграммыToolStripMenuItem.Text = "Помощь";
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // button1
@@ -378,6 +379,7 @@
             this.button6.TabIndex = 23;
             this.toolTip1.SetToolTip(this.button6, "Загрузить их файла");
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // FolderBrowserDialog
             // 

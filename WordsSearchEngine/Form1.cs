@@ -37,18 +37,18 @@ namespace WordsSearchEngine
         {
             string Text = OriginalText.Text;
 
-            if (checkBox1.Checked)
+            if (CapitalizedW.Checked)
             {
                 CapitalizedWords(Text);
             }
-            if (checkBox2.Checked)
+            if (AbbreviationW.Checked)
             {
                 Abbreviation(Text);
             }
             if (EnglishWordsCriteria.Checked)
                 SearchEnglishWords(Text);
 
-            if (checkBox4.Checked)
+            if (WLenght.Checked)
             {
                 int dl = Convert.ToInt32(textBox1.Text);
                 Length(Text, dl);
@@ -56,12 +56,12 @@ namespace WordsSearchEngine
 
             if (LengthRangeCriteria.Checked)
                 SearchWordsOfGivenLength(Text, LengthRange.Text);
-            if (checkBox6.Checked)
+            if (WCombination.Checked)
             {
                 string Kr6 = textBox3.Text;
                 Combination(Text, Kr6);
             }
-            if (checkBox7.Checked)
+            if (GivenW.Checked)
             {
                 string Kr7 = textBox4.Text;
                 GivenWord(Text, Kr7);
@@ -301,92 +301,92 @@ namespace WordsSearchEngine
             }
         }
 
-        private void checkBox1_Click(object sender, EventArgs e)
+        private void CapitalizedW_Click(object sender, EventArgs e)
         {
             SearchInFilesCriteria.Enabled = false;
-            checkBox2.Enabled = false;
+            AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
-            checkBox4.Enabled = false;
+            WLenght.Enabled = false;
             LengthRangeCriteria.Enabled = false;
-            checkBox6.Enabled = false;
-            checkBox7.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
         }
 
-        private void checkBox2_Click(object sender, EventArgs e)
+        private void AbbreviationW_Click(object sender, EventArgs e)
         {
-            checkBox1.Enabled = false;
+            CapitalizedW.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
-            checkBox4.Enabled = false;
+            WLenght.Enabled = false;
             LengthRangeCriteria.Enabled = false;
-            checkBox6.Enabled = false;
-            checkBox7.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
         }
 
-        private void checkBox3_Click(object sender, EventArgs e)
+        private void EnglishWordsCriteria_Click(object sender, EventArgs e)
         {
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
-            checkBox4.Enabled = false;
+            WLenght.Enabled = false;
             LengthRangeCriteria.Enabled = false;
-            checkBox6.Enabled = false;
-            checkBox7.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
         }
 
-        private void checkBox4_Click(object sender, EventArgs e)
+        private void WLengh_Click(object sender, EventArgs e)
         {
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
             LengthRangeCriteria.Enabled = false;
-            checkBox6.Enabled = false;
-            checkBox7.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
         }
 
-        private void checkBox5_Click(object sender, EventArgs e)
+        private void LengthRangeCriteria_Click(object sender, EventArgs e)
         {
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
-            checkBox4.Enabled = false;
+            WLenght.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
-            checkBox6.Enabled = false;
-            checkBox7.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
         }
 
-        private void checkBox6_Click(object sender, EventArgs e)
+        private void WCombination_Click(object sender, EventArgs e)
         {
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
-            checkBox4.Enabled = false;
+            WLenght.Enabled = false;
             LengthRangeCriteria.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
-            checkBox7.Enabled = false;
+            GivenW.Enabled = false;
         }
 
-        private void checkBox7_Click(object sender, EventArgs e)
+        private void GivenW_Click(object sender, EventArgs e)
         {
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
-            checkBox4.Enabled = false;
+            WLenght.Enabled = false;
             LengthRangeCriteria.Enabled = false;
-            checkBox6.Enabled = false;
+            WCombination.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
         }
 
-        private void checkBox8_Click(object sender, EventArgs e)
+        private void SearchInFilesCriteria_Click(object sender, EventArgs e)
         {
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
-            checkBox4.Enabled = false;
+            WLenght.Enabled = false;
             LengthRangeCriteria.Enabled = false;
-            checkBox6.Enabled = false;
-            checkBox7.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
         }
 
         private void SearchInFiles()
@@ -415,7 +415,12 @@ namespace WordsSearchEngine
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                OriginalText.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
+            }
         }
     }
 }

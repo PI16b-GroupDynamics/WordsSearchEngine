@@ -46,16 +46,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.GivenW = new System.Windows.Forms.CheckBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.WCombination = new System.Windows.Forms.CheckBox();
             this.LengthRange = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LengthRangeCriteria = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.WLenght = new System.Windows.Forms.CheckBox();
             this.EnglishWordsCriteria = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.AbbreviationW = new System.Windows.Forms.CheckBox();
+            this.CapitalizedW = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.SearchInFilesCriteria = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -65,6 +65,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -192,16 +193,16 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.checkBox7);
+            this.groupBox1.Controls.Add(this.GivenW);
             this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.checkBox6);
+            this.groupBox1.Controls.Add(this.WCombination);
             this.groupBox1.Controls.Add(this.LengthRange);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.LengthRangeCriteria);
-            this.groupBox1.Controls.Add(this.checkBox4);
+            this.groupBox1.Controls.Add(this.WLenght);
             this.groupBox1.Controls.Add(this.EnglishWordsCriteria);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.AbbreviationW);
+            this.groupBox1.Controls.Add(this.CapitalizedW);
             this.groupBox1.Location = new System.Drawing.Point(641, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(180, 247);
@@ -216,15 +217,15 @@
             this.textBox4.Size = new System.Drawing.Size(138, 20);
             this.textBox4.TabIndex = 18;
             // 
-            // checkBox7
+            // GivenW
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(6, 180);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(111, 17);
-            this.checkBox7.TabIndex = 17;
-            this.checkBox7.Text = "Заданное слово:";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.GivenW.AutoSize = true;
+            this.GivenW.Location = new System.Drawing.Point(6, 180);
+            this.GivenW.Name = "GivenW";
+            this.GivenW.Size = new System.Drawing.Size(111, 17);
+            this.GivenW.TabIndex = 17;
+            this.GivenW.Text = "Заданное слово:";
+            this.GivenW.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
@@ -233,15 +234,15 @@
             this.textBox3.Size = new System.Drawing.Size(44, 20);
             this.textBox3.TabIndex = 16;
             // 
-            // checkBox6
+            // WCombination
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(6, 154);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(118, 17);
-            this.checkBox6.TabIndex = 15;
-            this.checkBox6.Text = "Комбинация букв:";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.WCombination.AutoSize = true;
+            this.WCombination.Location = new System.Drawing.Point(6, 154);
+            this.WCombination.Name = "WCombination";
+            this.WCombination.Size = new System.Drawing.Size(118, 17);
+            this.WCombination.TabIndex = 15;
+            this.WCombination.Text = "Комбинация букв:";
+            this.WCombination.UseVisualStyleBackColor = true;
             // 
             // LengthRange
             // 
@@ -267,15 +268,15 @@
             this.LengthRangeCriteria.Text = "Диапазон:";
             this.LengthRangeCriteria.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // WLenght
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 100);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(95, 17);
-            this.checkBox4.TabIndex = 11;
-            this.checkBox4.Text = "Длина слова:";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.WLenght.AutoSize = true;
+            this.WLenght.Location = new System.Drawing.Point(6, 100);
+            this.WLenght.Name = "WLenght";
+            this.WLenght.Size = new System.Drawing.Size(95, 17);
+            this.WLenght.TabIndex = 11;
+            this.WLenght.Text = "Длина слова:";
+            this.WLenght.UseVisualStyleBackColor = true;
             // 
             // EnglishWordsCriteria
             // 
@@ -287,25 +288,25 @@
             this.EnglishWordsCriteria.Text = "Английские слова";
             this.EnglishWordsCriteria.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // AbbreviationW
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 49);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(99, 17);
-            this.checkBox2.TabIndex = 9;
-            this.checkBox2.Text = "Аббревиатуры";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.AbbreviationW.AutoSize = true;
+            this.AbbreviationW.Location = new System.Drawing.Point(6, 49);
+            this.AbbreviationW.Name = "AbbreviationW";
+            this.AbbreviationW.Size = new System.Drawing.Size(99, 17);
+            this.AbbreviationW.TabIndex = 9;
+            this.AbbreviationW.Text = "Аббревиатуры";
+            this.AbbreviationW.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // CapitalizedW
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 26);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(157, 17);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Слова с прописной буквы";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CapitalizedW.AutoSize = true;
+            this.CapitalizedW.Location = new System.Drawing.Point(6, 26);
+            this.CapitalizedW.Name = "CapitalizedW";
+            this.CapitalizedW.Size = new System.Drawing.Size(157, 17);
+            this.CapitalizedW.TabIndex = 8;
+            this.CapitalizedW.Text = "Слова с прописной буквы";
+            this.CapitalizedW.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -387,6 +388,10 @@
             this.FolderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.FolderBrowserDialog.ShowNewFolderButton = false;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,15 +433,15 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox LengthRangeCriteria;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox WLenght;
         private System.Windows.Forms.CheckBox EnglishWordsCriteria;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox AbbreviationW;
+        private System.Windows.Forms.CheckBox CapitalizedW;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox GivenW;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox WCombination;
         private System.Windows.Forms.TextBox LengthRange;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox SearchInFilesCriteria;
@@ -453,6 +458,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripMenuItem параметрыToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

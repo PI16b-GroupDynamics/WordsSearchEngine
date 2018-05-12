@@ -12,70 +12,160 @@ namespace WordsSearchEngine
         public Form1()
         {
             InitializeComponent();
-            form2 = new Form2();
-            form4 = new Form4();
+            _authorizationForm = new Form2();
+            _settingsForm = new Form4();
 
-            _separators = new[] { ' ', '\n', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '%' };
+            SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
+            _separators = new[] { ' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '%', '\\', '/' };
+            _resultList = new List<string>();
+            _resultfileList = new List<string>();
         }
 
-        private Form2 form2;
-        private Form4 form4;
+        private readonly Form2 _authorizationForm;
+        private readonly Form4 _settingsForm;
 
-        private char[] _separators; // Список возможных разделителей в исходном тексте.
-        
+        private readonly char[] _separators; // Список возможных разделителей в исходном тексте.
+        private List<string> _resultList;
+        private List<string> _resultfileList;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            form2.ShowDialog();
+            _authorizationForm.ShowDialog();
         }
 
         private void параметрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            form4.ShowDialog();
+            _settingsForm.ShowDialog();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Search_Click(object sender, EventArgs e)
         {
-            string Text = OriginalText.Text;
+            if (SearchInTextCriteria.Checked)
+            {
+                // Получаем список всех слов исходного текста.
+                _resultList = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
+                _resultfileList.Clear();
+
+                if (CheckAllCriteria()) // Проверяем текст на наличие слов.
+                {
+                    FoundWords.Clear();
+                    // Выводим список найденных слов/наименований файлов в окно результата.
+                    foreach (string word in _resultList)
+                        FoundWords.Text += word + Environment.NewLine;
+                }
+                else
+                    MessageBox.Show(@"В тексте нет слов, удовлетворяющим критериям поиска",
+                        @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                _resultfileList = new List<string>();
+                SearchInFiles();
+
+                if (_resultfileList.Count != 0)
+                {
+                    FoundWords.Clear();
+                    // Выводим список наименований файлов в окно результата.
+                    foreach (string word in _resultfileList)
+                        FoundWords.Text += word + Environment.NewLine;
+                }
+                else
+                    MessageBox.Show(@"В текстах файлов, находящийся в указанном каталоге,"
+                        + @" нет слов, удовлетворяющим критериям поиска",
+                        @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private bool CheckAllCriteria()
+        {
+            // Проверяем текст на критерии поиска.
 
             if (CapitalizedW.Checked)
-            {
-                CapitalizedWords(Text);
-            }
+                CapitalizedWords(_resultList);
+
             if (AbbreviationW.Checked)
-            {
-                Abbreviation(Text);
-            }
+                Abbreviation(_resultList);
+
             if (EnglishWordsCriteria.Checked)
-                SearchEnglishWords(Text);
+                SearchEnglishWords(_resultList);
 
             if (WLenght.Checked)
-            {
-                int dl = Convert.ToInt32(textBox1.Text);
-                Length(Text, dl);
-            }
+                Length(_resultList, LengthValue.Text);
 
-            if (LengthRangeCriteria.Checked)
-                SearchWordsOfGivenLength(Text, LengthRange.Text);
             if (WCombination.Checked)
-            {
-                string Kr6 = textBox3.Text;
-                Combination(Text, Kr6);
-            }
-            if (GivenW.Checked)
-            {
-                string Kr7 = textBox4.Text;
-                GivenWord(Text, Kr7);
-            }
+                Combination(_resultList, CombinationValue.Text);
 
-            if (SearchInFilesCriteria.Checked)
-                SearchInFiles();
+            if (GivenW.Checked)
+                GivenWord(_resultList, WordValue.Text);
+
+            // Если список найденных слов не пуст, возвращаем true (поиск был успешным).
+            return _resultList.Count != 0;
         }
 
-        void CapitalizedWords(string txt, string fileName = null)
+        private void SearchInFiles()
         {
-            List<string> resultList = new List<string>(); // Список с найденными словами/наименованиями файлов.
+            List<string> files = new List<string>();
 
-            string[] words = txt.Split(new Char[] { ' ', ',', '.', ':', '?', '!', ';', '-' });
+            // Поиск в файлах осуществляется только в файлах с расширением ".txt".
+            foreach (string file in Directory.GetFiles(SourceDirectory.Text).ToList())
+            {
+                if (file.EndsWith(".txt"))
+                    files.Add(file.Replace(SourceDirectory.Text + "\\", ""));
+            }
+
+            foreach (string file in files)
+            {
+                // Получаем список слов файла.
+                _resultList = File.ReadAllText(SourceDirectory.Text + "\\" + file, 
+                    Encoding.GetEncoding(1251)).Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
+                
+                if(CheckAllCriteria())
+                    AppendResultFilesList(file, _resultList);
+            }
+
+            /*
+            // Аналогичный код, но с использованием Linq.
+            // Преимущества:
+            // 1) можно добавить поиск в подкаталогах,
+            // 2) можно попробовать искать слова в файлах .docx, .rtf, .pdf.
+
+            // Получаем список файлов заданной директории.
+            var files = from retrievedFile in Directory.EnumerateFiles(SourceDirectory.Text, "*.txt",
+                    SearchOption.TopDirectoryOnly)
+                select new
+                {
+                    Name = retrievedFile.Replace(SourceDirectory.Text + "\\", ""), 
+                    WordList = File.ReadAllText(retrievedFile, Encoding.GetEncoding(1251)).Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList()
+                };
+
+            foreach (var file in files)
+            {
+                //string encoding; // Автоопределение кодировки.
+                //using (StreamReader sr = new StreamReader(SourceDirectory.Text + "\\" + file.Name, true))
+                //{
+                //   sr.ReadToEnd();
+                //  encoding = sr.CurrentEncoding.ToString();
+                //}
+                _resultList = file.WordList;
+                if(CheckAllCriteria())
+                    AppendResultFilesList(file.Name, _resultList);
+            }
+            */
+        }
+
+        void AppendResultFilesList(string file, List<string> wordList)
+        {
+            _resultfileList.Add(file);
+
+            foreach (string word in wordList)
+                _resultfileList.Add(word);
+            
+            _resultfileList.Add("");
+        }
+
+        void CapitalizedWords(List<string> words)
+        {
+            _resultList = new List<string>();
 
             foreach (var s in words)
             {
@@ -83,37 +173,26 @@ namespace WordsSearchEngine
                 {
                     if (char.IsUpper(s[0]))
                     {
-                        resultList.Add(s);
+                        _resultList.Add(s);
                     }
-                }
-            }
-
-            if (resultList.Count != 0)
-            {
-                if (fileName != null) FoundWords.Text += fileName + Environment.NewLine;
-                foreach (string foundWord in resultList)
-                {
-                    FoundWords.Text += foundWord + Environment.NewLine;
                 }
             }
         }
 
-        void Abbreviation(string txt, string fileName = null)
+        void Abbreviation(List<string> words)
         {
-            List<string> resultList = new List<string>(); // Список с найденными словами/наименованиями файлов.
-
-            string[] words = txt.Split(new Char[] { ' ', ',', '.', ':', '?', '!', ';', '-' });
+            _resultList= new List<string>();
             string tmp = "";
 
-            foreach (var s in words)
+            foreach (var word in words)
             {
-                if (s.Trim() != "")
+                if (word.Trim() != "")
                 {
-                    for (int i = 0; i < s.Length; i++)
+                    foreach (var letter in word)
                     {
-                        if (char.IsUpper(s[i]))
+                        if (char.IsUpper(letter))
                         {
-                            tmp = tmp + s[i];
+                            tmp = tmp + letter;
                         }
                         else
                         {
@@ -121,105 +200,63 @@ namespace WordsSearchEngine
                             break;
                         }
                     }
-                    if (s == tmp)
+
+                    if (word == tmp)
                     {
-                        FoundWords.Text = FoundWords.Text + tmp + "\n";
+                        _resultList.Add(tmp);
                         tmp = "";
                     }
                 }
             }
+        }
 
-            if (resultList.Count != 0)
+        private void SearchEnglishWords(List<string> words)
+        {
+            _resultList = new List<string>();
+            foreach (string word in words)
             {
-                if (fileName != null) FoundWords.Text += fileName + Environment.NewLine;
-                foreach (string foundWord in resultList)
-                {
-                    FoundWords.Text += foundWord + Environment.NewLine;
-                }
+                // Проверяем, является ли первая буква символом английского алфавита.
+                if (word[0] >= 65 && word[0] <= 90 || word[0] >= 97 && word[0] <= 122)
+                    _resultList.Add(word);
             }
         }
 
-        private void SearchEnglishWords(string text, string fileName = null)
+        void Length(List<string> words, string len)
         {
-            List<string> resultList = new List<string>(); // Список с найденными словами/наименованиями файлов.
-
-            string[] words = text.Split(_separators, StringSplitOptions.RemoveEmptyEntries);
-
-            for (int i = 0; i < words.Length; i++)
+            _resultList = new List<string>();
+            // Проверяем, не ввёел ли пользователь диапазон длин.
+            if (len.IndexOf('-') == -1)
             {
-                if (words[i][0] >= 65 && words[i][0] <= 90 || words[i][0] >= 97 && words[i][0] <= 122)
-                    resultList.Add(words[i]);
-            }
-
-            if(resultList.Count != 0)
-            {
-                if (fileName != null) FoundWords.Text += fileName + Environment.NewLine;
-                foreach (string foundWord in resultList)
+                // Поиск слов по одному значению длины.
+                foreach (var s in words)
                 {
-                    FoundWords.Text += foundWord + Environment.NewLine;
-                }
-            }
-        }
-
-        void Length(string txt, int len, string fileName = null)
-        {
-            List<string> resultList = new List<string>(); // Список с найденными словами/наименованиями файлов.
-
-            string[] words = txt.Split(new Char[] { ' ', ',', '.', ':', '?', '!', ';', '-' });
-
-            foreach (var s in words)
-            {
-                if (s.Trim() != "")
-                {
-                    if (s.Length == len)
+                    if (s.Trim() != "")
                     {
-                        resultList.Add(s);
+                        if (s.Length == Convert.ToInt32(len))
+                        {
+                            _resultList.Add(s);
+                        }
                     }
                 }
             }
-
-            if (resultList.Count != 0)
+            else
             {
-                if (fileName != null) FoundWords.Text += fileName + Environment.NewLine;
-                foreach (string foundWord in resultList)
+                // Поиск слов, чья длина колеблется в заданном диапазоне.
+                int lowBound = Convert.ToInt32(len.Substring(0, len.IndexOf('-')));
+                int upperBound = Convert.ToInt32(len.Substring(len.IndexOf('-') + 1));
+
+                _resultList = new List<string>();
+                foreach (string word in words)
                 {
-                    FoundWords.Text += foundWord + Environment.NewLine;
+                    if (word.Length >= lowBound && word.Length <= upperBound)
+                        _resultList.Add(word);
                 }
             }
         }
 
-        private void SearchWordsOfGivenLength(string text, string lengthRange, string fileName = null)
+        void Combination(List<string> words, string sl)
         {
-            List<string> resultList = new List<string>(); // Список с найденными словами/наименованиями файлов.
-
-            int lowBound, upperBound;
-            if (lengthRange.IndexOf("-") == -1) return;
-            
-            lowBound = Convert.ToInt32(lengthRange.Substring(0, lengthRange.IndexOf("-")));
-            upperBound = Convert.ToInt32(lengthRange.Substring(lengthRange.IndexOf("-") + 1));
-
-            string[] words = text.Split(_separators, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string word in words)
-            {
-               if(word.Length >= lowBound && word.Length <= upperBound)
-                   resultList.Add(word);
-            }
-
-            if (resultList.Count != 0)
-            {
-                if (fileName != null) FoundWords.Text += fileName + Environment.NewLine;
-                foreach (string foundWord in resultList)
-                {
-                    FoundWords.Text += foundWord + Environment.NewLine;
-                }
-            }
-        }
-        void Combination(string txt, string sl, string fileName = null)
-        {
-            List<string> resultList = new List<string>(); // Список с найденными словами/наименованиями файлов.
-
-            string[] words = txt.Split(new Char[] { ' ', ',', '.', ':', '?', '!', ';', '-' });
+            _resultList = new List<string>();
             Char chrS = sl[0];
             Char chrE = sl[sl.Length - 1];
 
@@ -236,15 +273,11 @@ namespace WordsSearchEngine
                         {
                             int len = endIndex - startIndex + 1;
                             string tmp1 = tmp.Substring(startIndex, len);
-                            if (tmp1.Length < sl.Length)
-                            {
-                                break;
-                            }
-                            else
+                            if (tmp1.Length >= sl.Length)
                             {
                                 if (tmp1 == sl)
                                 {
-                                    resultList.Add(s);
+                                    _resultList.Add(s);
                                 }
                                 else
                                 {
@@ -252,7 +285,7 @@ namespace WordsSearchEngine
                                     string tmp2 = tmp1.Substring(startIndex, sl.Length);
                                     if (tmp2 == sl)
                                     {
-                                        resultList.Add(s);
+                                        _resultList.Add(s);
                                     }
                                 }
                             }
@@ -260,46 +293,28 @@ namespace WordsSearchEngine
                     }
                 }
             }
-            if (resultList.Count != 0)
-            {
-                if (fileName != null) FoundWords.Text += fileName + Environment.NewLine;
-                foreach (string foundWord in resultList)
-                {
-                    FoundWords.Text += foundWord + Environment.NewLine;
-                }
-            }
         }
 
-        void GivenWord(string txt, string sl, string fileName = null)
+        private void GivenWord(List<string> words, string sl)
         {
-            List<string> resultList = new List<string>(); // Список с найденными словами/наименованиями файлов.
-
+            _resultList = new List<string>();
             int ecx = 0;
-            string[] words = txt.Split(new Char[] { ' ', ',', '.', ':', '?', '!', ';', '-' });
-
             foreach (var s in words)
             {
                 if (s.Trim() != "")
                 {
                     if (s == sl)
                     {
-                       resultList.Add(s);
+                        _resultList.Add(s);
                         ecx++;
                     }
                 }
             }
+
             string mes = "Количество вхождений заданного слова в текст: " + Convert.ToString(ecx);
             MessageBox.Show(mes);
-
-            if (resultList.Count != 0)
-            {
-                if (fileName != null) FoundWords.Text += fileName + Environment.NewLine;
-                foreach (string foundWord in resultList)
-                {
-                    FoundWords.Text += foundWord + Environment.NewLine;
-                }
-            }
         }
+
 
         private void CapitalizedW_Click(object sender, EventArgs e)
         {
@@ -307,7 +322,6 @@ namespace WordsSearchEngine
             AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
             WLenght.Enabled = false;
-            LengthRangeCriteria.Enabled = false;
             WCombination.Enabled = false;
             GivenW.Enabled = false;
         }
@@ -318,7 +332,6 @@ namespace WordsSearchEngine
             SearchInFilesCriteria.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
             WLenght.Enabled = false;
-            LengthRangeCriteria.Enabled = false;
             WCombination.Enabled = false;
             GivenW.Enabled = false;
         }
@@ -329,7 +342,6 @@ namespace WordsSearchEngine
             AbbreviationW.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
             WLenght.Enabled = false;
-            LengthRangeCriteria.Enabled = false;
             WCombination.Enabled = false;
             GivenW.Enabled = false;
         }
@@ -340,7 +352,6 @@ namespace WordsSearchEngine
             AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
-            LengthRangeCriteria.Enabled = false;
             WCombination.Enabled = false;
             GivenW.Enabled = false;
         }
@@ -362,7 +373,6 @@ namespace WordsSearchEngine
             AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
             WLenght.Enabled = false;
-            LengthRangeCriteria.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
             GivenW.Enabled = false;
         }
@@ -373,7 +383,6 @@ namespace WordsSearchEngine
             AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
             WLenght.Enabled = false;
-            LengthRangeCriteria.Enabled = false;
             WCombination.Enabled = false;
             SearchInFilesCriteria.Enabled = false;
         }
@@ -384,27 +393,15 @@ namespace WordsSearchEngine
             AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
             WLenght.Enabled = false;
-            LengthRangeCriteria.Enabled = false;
             WCombination.Enabled = false;
             GivenW.Enabled = false;
-        }
-
-        private void SearchInFiles()
-        {
-            List<string> files = Directory.GetFiles(SearchDirectory.Text).ToList();
-
-            for (int i = 0; i < files.Count; i++)
-            {
-                if(EnglishWordsCriteria.Checked)
-                    SearchEnglishWords(File.ReadAllText(files[i], Encoding.GetEncoding(1251)), files[i]);
-            }
         }
 
         private void Browse_Click(object sender, EventArgs e)
         {
             if (FolderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                SearchDirectory.Text = FolderBrowserDialog.SelectedPath;
+                SourceDirectory.Text = FolderBrowserDialog.SelectedPath;
             }
         }
 
@@ -413,14 +410,37 @@ namespace WordsSearchEngine
             Application.Exit();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void OpenText_Click(object sender, EventArgs e)
         {
             openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 OriginalText.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
             }
+        }
+
+        private void SearchInTextCriteria_CheckedChanged(object sender, EventArgs e)
+        {
+            // Источник поска слов - заданный в окне текст.
+            SetSourceAsText(true);
+        }
+
+        private void SearchInFilesCriteria_CheckedChanged(object sender, EventArgs e)
+        {
+            // Источник поска слов - тексты файлов (т.е. не заданный в окне текст).
+            SetSourceAsText(false);
+        }
+
+        private void SetSourceAsText(bool textSourceValue)
+        {
+            // Изменяем доступ к элементам управления в зависимости
+            // от источника поиска (заданный текст или тексты в файлах).
+            OriginalText.Enabled = textSourceValue;
+            OpenText.Enabled = textSourceValue;
+            SaveText.Enabled = textSourceValue;
+            SourceDirectory.Enabled = !textSourceValue;
+            Browse.Enabled = !textSourceValue;
         }
     }
 }

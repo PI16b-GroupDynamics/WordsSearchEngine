@@ -33,15 +33,15 @@
             this.OriginalText = new System.Windows.Forms.RichTextBox();
             this.FoundWords = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.загрузитьИзФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьВФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.параметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.описаниеПрогграммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveInFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ParamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ParametrsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InstructionStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProgrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.SaveText = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -72,110 +72,121 @@
             // 
             // OriginalText
             // 
-            this.OriginalText.Location = new System.Drawing.Point(30, 69);
+            this.OriginalText.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OriginalText.Location = new System.Drawing.Point(14, 63);
             this.OriginalText.Name = "OriginalText";
             this.OriginalText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.OriginalText.Size = new System.Drawing.Size(450, 255);
+            this.OriginalText.Size = new System.Drawing.Size(468, 261);
             this.OriginalText.TabIndex = 0;
             this.OriginalText.Text = "";
+            this.toolTip1.SetToolTip(this.OriginalText, "Поле исходного текста");
             // 
             // FoundWords
             // 
-            this.FoundWords.Location = new System.Drawing.Point(486, 69);
+            this.FoundWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FoundWords.Location = new System.Drawing.Point(486, 63);
             this.FoundWords.Name = "FoundWords";
             this.FoundWords.ReadOnly = true;
             this.FoundWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.FoundWords.Size = new System.Drawing.Size(179, 311);
+            this.FoundWords.Size = new System.Drawing.Size(179, 313);
             this.FoundWords.TabIndex = 1;
             this.FoundWords.Text = "";
+            this.toolTip1.SetToolTip(this.FoundWords, "Результирующее поле");
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.настройкиToolStripMenuItem,
-            this.справкаToolStripMenuItem});
+            this.FileToolStripMenuItem,
+            this.ParamsToolStripMenuItem,
+            this.HelpToolStripMenuItem,
+            this.ExitToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(863, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(863, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // файлToolStripMenuItem
+            // FileToolStripMenuItem
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.загрузитьИзФайлаToolStripMenuItem,
-            this.сохранитьВФайлToolStripMenuItem,
-            this.выходToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LoadFromFileToolStripMenuItem,
+            this.SaveInFileToolStripMenuItem});
+            this.FileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
+            this.FileToolStripMenuItem.Text = "Файл";
             // 
-            // загрузитьИзФайлаToolStripMenuItem
+            // LoadFromFileToolStripMenuItem
             // 
-            this.загрузитьИзФайлаToolStripMenuItem.Name = "загрузитьИзФайлаToolStripMenuItem";
-            this.загрузитьИзФайлаToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.загрузитьИзФайлаToolStripMenuItem.Text = "Загрузить из файла";
+            this.LoadFromFileToolStripMenuItem.Name = "LoadFromFileToolStripMenuItem";
+            this.LoadFromFileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.LoadFromFileToolStripMenuItem.Text = "Загрузить из файла";
             // 
-            // сохранитьВФайлToolStripMenuItem
+            // SaveInFileToolStripMenuItem
             // 
-            this.сохранитьВФайлToolStripMenuItem.Name = "сохранитьВФайлToolStripMenuItem";
-            this.сохранитьВФайлToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.сохранитьВФайлToolStripMenuItem.Text = "Сохранить в файл";
+            this.SaveInFileToolStripMenuItem.Name = "SaveInFileToolStripMenuItem";
+            this.SaveInFileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.SaveInFileToolStripMenuItem.Text = "Сохранить в файл";
             // 
-            // выходToolStripMenuItem
+            // ParamsToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            this.ParamsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ParametrsToolStripMenuItem});
+            this.ParamsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ParamsToolStripMenuItem.Name = "ParamsToolStripMenuItem";
+            this.ParamsToolStripMenuItem.Size = new System.Drawing.Size(83, 21);
+            this.ParamsToolStripMenuItem.Text = "Настройки";
             // 
-            // настройкиToolStripMenuItem
+            // ParametrsToolStripMenuItem
             // 
-            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.параметрыToolStripMenuItem});
-            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.настройкиToolStripMenuItem.Text = "Настройки";
+            this.ParametrsToolStripMenuItem.Name = "ParametrsToolStripMenuItem";
+            this.ParametrsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ParametrsToolStripMenuItem.Text = "Параметры";
+            this.ParametrsToolStripMenuItem.Click += new System.EventHandler(this.параметрыToolStripMenuItem_Click);
             // 
-            // параметрыToolStripMenuItem
+            // HelpToolStripMenuItem
             // 
-            this.параметрыToolStripMenuItem.Name = "параметрыToolStripMenuItem";
-            this.параметрыToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.параметрыToolStripMenuItem.Text = "Параметры";
-            this.параметрыToolStripMenuItem.Click += new System.EventHandler(this.параметрыToolStripMenuItem_Click);
+            this.HelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InstructionStripMenuItem,
+            this.ProgrammToolStripMenuItem});
+            this.HelpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
+            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(70, 21);
+            this.HelpToolStripMenuItem.Text = "Справка";
             // 
-            // справкаToolStripMenuItem
+            // InstructionStripMenuItem
             // 
-            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.описаниеПрогграммыToolStripMenuItem,
-            this.оПрограммеToolStripMenuItem});
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.справкаToolStripMenuItem.Text = "Справка";
+            this.InstructionStripMenuItem.Name = "InstructionStripMenuItem";
+            this.InstructionStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.InstructionStripMenuItem.Text = "Инструкция";
             // 
-            // описаниеПрогграммыToolStripMenuItem
+            // ProgrammToolStripMenuItem
             // 
-            this.описаниеПрогграммыToolStripMenuItem.Name = "описаниеПрогграммыToolStripMenuItem";
-            this.описаниеПрогграммыToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.описаниеПрогграммыToolStripMenuItem.Text = "Помощь";
+            this.ProgrammToolStripMenuItem.Name = "ProgrammToolStripMenuItem";
+            this.ProgrammToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.ProgrammToolStripMenuItem.Text = "О программе";
             // 
-            // оПрограммеToolStripMenuItem
+            // ExitToolStripMenuItem1
             // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.ExitToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1";
+            this.ExitToolStripMenuItem1.Size = new System.Drawing.Size(57, 21);
+            this.ExitToolStripMenuItem1.Text = "Выход";
+            this.ExitToolStripMenuItem1.Click += new System.EventHandler(this.ExitToolStripMenuItem1_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Gainsboro;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(693, 0);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(702, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 23);
+            this.button1.Size = new System.Drawing.Size(138, 25);
             this.button1.TabIndex = 3;
             this.button1.Text = "Вход";
+            this.toolTip1.SetToolTip(this.button1, "Вход или Регистрация");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -184,12 +195,13 @@
             this.SaveText.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveText.BackgroundImage")));
             this.SaveText.FlatAppearance.BorderSize = 0;
             this.SaveText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveText.Location = new System.Drawing.Point(451, 37);
+            this.SaveText.Location = new System.Drawing.Point(451, 33);
             this.SaveText.Name = "SaveText";
             this.SaveText.Size = new System.Drawing.Size(29, 29);
             this.SaveText.TabIndex = 4;
             this.toolTip1.SetToolTip(this.SaveText, "Сохранить в файл");
             this.SaveText.UseVisualStyleBackColor = true;
+            this.SaveText.Click += new System.EventHandler(this.SaveText_Click);
             // 
             // groupBox1
             // 
@@ -202,99 +214,116 @@
             this.groupBox1.Controls.Add(this.EnglishWordsCriteria);
             this.groupBox1.Controls.Add(this.AbbreviationW);
             this.groupBox1.Controls.Add(this.CapitalizedW);
-            this.groupBox1.Location = new System.Drawing.Point(671, 47);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.Location = new System.Drawing.Point(671, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(180, 203);
+            this.groupBox1.Size = new System.Drawing.Size(180, 277);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Критерии поиска";
             // 
             // WordValue
             // 
-            this.WordValue.Location = new System.Drawing.Point(31, 170);
+            this.WordValue.Location = new System.Drawing.Point(23, 247);
             this.WordValue.Name = "WordValue";
-            this.WordValue.Size = new System.Drawing.Size(138, 20);
+            this.WordValue.Size = new System.Drawing.Size(104, 22);
             this.WordValue.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.WordValue, "Поле для слова, по которому будет осуществляться поиск");
             // 
             // GivenW
             // 
             this.GivenW.AutoSize = true;
-            this.GivenW.Location = new System.Drawing.Point(13, 147);
+            this.GivenW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GivenW.Location = new System.Drawing.Point(6, 222);
             this.GivenW.Name = "GivenW";
-            this.GivenW.Size = new System.Drawing.Size(111, 17);
+            this.GivenW.Size = new System.Drawing.Size(123, 19);
             this.GivenW.TabIndex = 17;
             this.GivenW.Text = "Заданное слово:";
             this.GivenW.UseVisualStyleBackColor = true;
+            this.GivenW.CheckedChanged += new System.EventHandler(this.GivenW_CheckedChanged);
             // 
             // CombinationValue
             // 
-            this.CombinationValue.Location = new System.Drawing.Point(125, 124);
+            this.CombinationValue.Location = new System.Drawing.Point(23, 192);
             this.CombinationValue.Name = "CombinationValue";
-            this.CombinationValue.Size = new System.Drawing.Size(44, 20);
+            this.CombinationValue.Size = new System.Drawing.Size(104, 22);
             this.CombinationValue.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.CombinationValue, "Поле для указания комбинации букв");
             // 
             // WCombination
             // 
             this.WCombination.AutoSize = true;
-            this.WCombination.Location = new System.Drawing.Point(13, 124);
+            this.WCombination.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WCombination.Location = new System.Drawing.Point(7, 167);
             this.WCombination.Name = "WCombination";
-            this.WCombination.Size = new System.Drawing.Size(118, 17);
+            this.WCombination.Size = new System.Drawing.Size(130, 19);
             this.WCombination.TabIndex = 15;
             this.WCombination.Text = "Комбинация букв:";
             this.WCombination.UseVisualStyleBackColor = true;
+            this.WCombination.CheckedChanged += new System.EventHandler(this.WCombination_CheckedChanged);
             // 
             // LengthValue
             // 
-            this.LengthValue.Location = new System.Drawing.Point(110, 98);
+            this.LengthValue.Location = new System.Drawing.Point(23, 134);
             this.LengthValue.Name = "LengthValue";
-            this.LengthValue.Size = new System.Drawing.Size(59, 20);
+            this.LengthValue.Size = new System.Drawing.Size(104, 22);
             this.LengthValue.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.LengthValue, "Поле для указания длины слова");
             // 
             // WLenght
             // 
             this.WLenght.AutoSize = true;
-            this.WLenght.Location = new System.Drawing.Point(12, 100);
+            this.WLenght.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WLenght.Location = new System.Drawing.Point(6, 109);
             this.WLenght.Name = "WLenght";
-            this.WLenght.Size = new System.Drawing.Size(95, 17);
+            this.WLenght.Size = new System.Drawing.Size(103, 19);
             this.WLenght.TabIndex = 11;
             this.WLenght.Text = "Длина слова:";
             this.WLenght.UseVisualStyleBackColor = true;
+            this.WLenght.CheckedChanged += new System.EventHandler(this.WLenght_CheckedChanged);
             // 
             // EnglishWordsCriteria
             // 
             this.EnglishWordsCriteria.AutoSize = true;
-            this.EnglishWordsCriteria.Location = new System.Drawing.Point(12, 73);
+            this.EnglishWordsCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EnglishWordsCriteria.Location = new System.Drawing.Point(6, 82);
             this.EnglishWordsCriteria.Name = "EnglishWordsCriteria";
-            this.EnglishWordsCriteria.Size = new System.Drawing.Size(119, 17);
+            this.EnglishWordsCriteria.Size = new System.Drawing.Size(129, 19);
             this.EnglishWordsCriteria.TabIndex = 10;
             this.EnglishWordsCriteria.Text = "Английские слова";
             this.EnglishWordsCriteria.UseVisualStyleBackColor = true;
+            this.EnglishWordsCriteria.CheckedChanged += new System.EventHandler(this.EnglishWordsCriteria_CheckedChanged);
             // 
             // AbbreviationW
             // 
             this.AbbreviationW.AutoSize = true;
-            this.AbbreviationW.Location = new System.Drawing.Point(12, 49);
+            this.AbbreviationW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AbbreviationW.Location = new System.Drawing.Point(6, 55);
             this.AbbreviationW.Name = "AbbreviationW";
-            this.AbbreviationW.Size = new System.Drawing.Size(99, 17);
+            this.AbbreviationW.Size = new System.Drawing.Size(110, 19);
             this.AbbreviationW.TabIndex = 9;
             this.AbbreviationW.Text = "Аббревиатуры";
             this.AbbreviationW.UseVisualStyleBackColor = true;
+            this.AbbreviationW.CheckedChanged += new System.EventHandler(this.AbbreviationW_CheckedChanged);
             // 
             // CapitalizedW
             // 
             this.CapitalizedW.AutoSize = true;
-            this.CapitalizedW.Location = new System.Drawing.Point(12, 26);
+            this.CapitalizedW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CapitalizedW.Location = new System.Drawing.Point(6, 27);
             this.CapitalizedW.Name = "CapitalizedW";
-            this.CapitalizedW.Size = new System.Drawing.Size(157, 17);
+            this.CapitalizedW.Size = new System.Drawing.Size(173, 19);
             this.CapitalizedW.TabIndex = 8;
             this.CapitalizedW.Text = "Слова с прописной буквы";
             this.CapitalizedW.UseVisualStyleBackColor = true;
+            this.CapitalizedW.CheckedChanged += new System.EventHandler(this.CapitalizedW_CheckedChanged);
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(671, 256);
+            this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Search.Location = new System.Drawing.Point(671, 346);
             this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(180, 23);
+            this.Search.Size = new System.Drawing.Size(180, 26);
             this.Search.TabIndex = 7;
             this.Search.Text = "Найти";
             this.Search.UseVisualStyleBackColor = true;
@@ -302,18 +331,20 @@
             // 
             // SourceDirectory
             // 
-            this.SourceDirectory.Location = new System.Drawing.Point(144, 354);
+            this.SourceDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SourceDirectory.Location = new System.Drawing.Point(154, 354);
             this.SourceDirectory.Name = "SourceDirectory";
-            this.SourceDirectory.Size = new System.Drawing.Size(269, 20);
+            this.SourceDirectory.Size = new System.Drawing.Size(238, 22);
             this.SourceDirectory.TabIndex = 22;
             // 
             // Browse
             // 
-            this.Browse.Location = new System.Drawing.Point(419, 353);
+            this.Browse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Browse.Location = new System.Drawing.Point(398, 353);
             this.Browse.Name = "Browse";
-            this.Browse.Size = new System.Drawing.Size(61, 23);
+            this.Browse.Size = new System.Drawing.Size(82, 23);
             this.Browse.TabIndex = 20;
-            this.Browse.Text = "Обзор";
+            this.Browse.Text = "Обзор...";
             this.Browse.UseVisualStyleBackColor = true;
             this.Browse.Click += new System.EventHandler(this.Browse_Click);
             // 
@@ -322,25 +353,31 @@
             this.SaveResult.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveResult.BackgroundImage")));
             this.SaveResult.FlatAppearance.BorderSize = 0;
             this.SaveResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveResult.Location = new System.Drawing.Point(636, 37);
+            this.SaveResult.Location = new System.Drawing.Point(615, 66);
             this.SaveResult.Name = "SaveResult";
             this.SaveResult.Size = new System.Drawing.Size(29, 29);
             this.SaveResult.TabIndex = 22;
             this.toolTip1.SetToolTip(this.SaveResult, "Сохранить в файл");
             this.SaveResult.UseVisualStyleBackColor = true;
+            this.SaveResult.Click += new System.EventHandler(this.SaveResult_Click);
             // 
             // OpenText
             // 
             this.OpenText.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenText.BackgroundImage")));
             this.OpenText.FlatAppearance.BorderSize = 0;
             this.OpenText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenText.Location = new System.Drawing.Point(419, 37);
+            this.OpenText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpenText.Location = new System.Drawing.Point(416, 33);
             this.OpenText.Name = "OpenText";
             this.OpenText.Size = new System.Drawing.Size(29, 29);
             this.OpenText.TabIndex = 23;
-            this.toolTip1.SetToolTip(this.OpenText, "Загрузить их файла");
+            this.toolTip1.SetToolTip(this.OpenText, "Загрузить из файла");
             this.OpenText.UseVisualStyleBackColor = true;
             this.OpenText.Click += new System.EventHandler(this.OpenText_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // FolderBrowserDialog
             // 
@@ -355,9 +392,10 @@
             // SearchInFilesCriteria
             // 
             this.SearchInFilesCriteria.AutoSize = true;
+            this.SearchInFilesCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SearchInFilesCriteria.Location = new System.Drawing.Point(12, 330);
             this.SearchInFilesCriteria.Name = "SearchInFilesCriteria";
-            this.SearchInFilesCriteria.Size = new System.Drawing.Size(106, 17);
+            this.SearchInFilesCriteria.Size = new System.Drawing.Size(129, 20);
             this.SearchInFilesCriteria.TabIndex = 24;
             this.SearchInFilesCriteria.Text = "Поиск в файлах";
             this.SearchInFilesCriteria.UseVisualStyleBackColor = true;
@@ -366,9 +404,10 @@
             // DirectoryText
             // 
             this.DirectoryText.AutoSize = true;
-            this.DirectoryText.Location = new System.Drawing.Point(27, 357);
+            this.DirectoryText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DirectoryText.Location = new System.Drawing.Point(12, 356);
             this.DirectoryText.Name = "DirectoryText";
-            this.DirectoryText.Size = new System.Drawing.Size(111, 13);
+            this.DirectoryText.Size = new System.Drawing.Size(139, 16);
             this.DirectoryText.TabIndex = 25;
             this.DirectoryText.Text = "Каталог для поиска:";
             // 
@@ -376,9 +415,10 @@
             // 
             this.SearchInTextCriteria.AutoSize = true;
             this.SearchInTextCriteria.Checked = true;
-            this.SearchInTextCriteria.Location = new System.Drawing.Point(12, 43);
+            this.SearchInTextCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SearchInTextCriteria.Location = new System.Drawing.Point(12, 37);
             this.SearchInTextCriteria.Name = "SearchInTextCriteria";
-            this.SearchInTextCriteria.Size = new System.Drawing.Size(156, 17);
+            this.SearchInTextCriteria.Size = new System.Drawing.Size(192, 20);
             this.SearchInTextCriteria.TabIndex = 26;
             this.SearchInTextCriteria.TabStop = true;
             this.SearchInTextCriteria.Text = "Поиск в заданном тексте";
@@ -388,9 +428,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(486, 53);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(486, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.Size = new System.Drawing.Size(139, 16);
             this.label1.TabIndex = 27;
             this.label1.Text = "Результаты поиска:";
             // 
@@ -416,7 +457,7 @@
             this.Controls.Add(this.Search);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Words Search Engine";
+            this.Text = "     ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -431,9 +472,9 @@
         private System.Windows.Forms.RichTextBox OriginalText;
         private System.Windows.Forms.RichTextBox FoundWords;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ParamsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button SaveText;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -449,21 +490,21 @@
         private System.Windows.Forms.TextBox LengthValue;
         private System.Windows.Forms.TextBox SourceDirectory;
         private System.Windows.Forms.Button Browse;
-        private System.Windows.Forms.ToolStripMenuItem описаниеПрогграммыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem загрузитьИзФайлаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьВФайлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InstructionStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LoadFromFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveInFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ProgrammToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button SaveResult;
         private System.Windows.Forms.Button OpenText;
-        private System.Windows.Forms.ToolStripMenuItem параметрыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ParametrsToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.RadioButton SearchInFilesCriteria;
         private System.Windows.Forms.Label DirectoryText;
         private System.Windows.Forms.RadioButton SearchInTextCriteria;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem1;
     }
 }
 

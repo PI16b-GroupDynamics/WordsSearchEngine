@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace WordsSearchEngine
             SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
             _separators = new[] { ' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '%', '\\', '/' };
             _resultList = new List<string>();
+            _resultListOT = new List<string>();
             _resultfileList = new List<string>();
         }
 
@@ -26,6 +28,7 @@ namespace WordsSearchEngine
 
         private readonly char[] _separators; // Список возможных разделителей в исходном тексте.
         private List<string> _resultList;
+        private List<string> _resultListOT;
         private List<string> _resultfileList;
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,10 +43,20 @@ namespace WordsSearchEngine
 
         private void Search_Click(object sender, EventArgs e)
         {
+            Search.Enabled = false;
+            FileToolStripMenuItem.Enabled = false;
+            ParamsToolStripMenuItem.Enabled = false;
+            HelpToolStripMenuItem.Enabled = false;
+            button1.Enabled = false;
+            OpenText.Enabled = false;
+            SaveText.Enabled = false;
+            SaveResult.Enabled = false;
+
             if (SearchInTextCriteria.Checked)
             {
                 // Получаем список всех слов исходного текста.
                 _resultList = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
+                _resultListOT = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
                 _resultfileList.Clear();
 
                 if (CheckAllCriteria()) // Проверяем текст на наличие слов.
@@ -51,7 +64,10 @@ namespace WordsSearchEngine
                     FoundWords.Clear();
                     // Выводим список найденных слов/наименований файлов в окно результата.
                     foreach (string word in _resultList)
+                    {
+                        MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FoundWords.Text += word + Environment.NewLine;
+                    }
                 }
                 else
                     MessageBox.Show(@"В тексте нет слов, удовлетворяющим критериям поиска",
@@ -67,36 +83,108 @@ namespace WordsSearchEngine
                     FoundWords.Clear();
                     // Выводим список наименований файлов в окно результата.
                     foreach (string word in _resultfileList)
+                    {
+                        MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FoundWords.Text += word + Environment.NewLine;
+                    }
                 }
                 else
                     MessageBox.Show(@"В текстах файлов, находящийся в указанном каталоге,"
                         + @" нет слов, удовлетворяющим критериям поиска",
                         @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            Search.Enabled = true;
+            FileToolStripMenuItem.Enabled = true;
+            ParamsToolStripMenuItem.Enabled = true;
+            HelpToolStripMenuItem.Enabled = true;
+            button1.Enabled = true;
+            OpenText.Enabled = true;
+            SaveText.Enabled = true;
+            SaveResult.Enabled = true;
         }
 
         private bool CheckAllCriteria()
         {
-            // Проверяем текст на критерии поиска.
-
+            // Проверяем текст на критерии поиска
+            int index = 0;
             if (CapitalizedW.Checked)
+            {
                 CapitalizedWords(_resultList);
+                foreach (string word in _resultList)
+                {
+                    index = OriginalText.Text.IndexOf(word);
+                    OriginalText.SelectionStart = index;
+                    OriginalText.SelectionLength = word.Length;
+                    OriginalText.SelectionColor = Color.Aqua;
+                    OriginalText.SelectionLength = 0;
+                }
+            }
 
             if (AbbreviationW.Checked)
+            {
                 Abbreviation(_resultList);
+                foreach (string word in _resultList)
+                {
+                    index = OriginalText.Text.IndexOf(word);
+                    OriginalText.SelectionStart = index;
+                    OriginalText.SelectionLength = word.Length;
+                    OriginalText.SelectionColor = Color.DarkBlue;
+                    OriginalText.SelectionLength = 0;
+                }
+            }
 
             if (EnglishWordsCriteria.Checked)
+            {
                 SearchEnglishWords(_resultList);
+                foreach (string word in _resultList)
+                {
+                    index = OriginalText.Text.IndexOf(word);
+                    OriginalText.SelectionStart = index;
+                    OriginalText.SelectionLength = word.Length;
+                    OriginalText.SelectionColor = Color.ForestGreen;
+                    OriginalText.SelectionLength = 0;
+                }
+            }
 
             if (WLenght.Checked)
+            {
                 Length(_resultList, LengthValue.Text);
+                foreach (string word in _resultList)
+                {
+                    index = OriginalText.Text.IndexOf(word);
+                    OriginalText.SelectionStart = index;
+                    OriginalText.SelectionLength = word.Length;
+                    OriginalText.SelectionColor = Color.Gold;
+                    OriginalText.SelectionLength = 0;
+                }
+            }
 
             if (WCombination.Checked)
+            {
                 Combination(_resultList, CombinationValue.Text);
+                foreach (string word in _resultList)
+                {
+                    index = OriginalText.Text.IndexOf(word);
+                    OriginalText.SelectionStart = index;
+                    OriginalText.SelectionLength = word.Length;
+                    OriginalText.SelectionColor = Color.LightBlue;
+                    OriginalText.SelectionLength = 0;
+                }
+            }
 
             if (GivenW.Checked)
+            {
                 GivenWord(_resultList, WordValue.Text);
+                foreach (string word in _resultList)
+                {
+                    index = OriginalText.Text.IndexOf(word);
+                    OriginalText.SelectionStart = index;
+                    OriginalText.SelectionLength = word.Length;
+                    OriginalText.SelectionColor = Color.Maroon;
+                    OriginalText.SelectionLength = 0;
+                }
+            }
 
             // Если список найденных слов не пуст, возвращаем true (поиск был успешным).
             return _resultList.Count != 0;
@@ -315,99 +403,12 @@ namespace WordsSearchEngine
             MessageBox.Show(mes);
         }
 
-
-        private void CapitalizedW_Click(object sender, EventArgs e)
-        {
-            SearchInFilesCriteria.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
-        }
-
-        private void AbbreviationW_Click(object sender, EventArgs e)
-        {
-            CapitalizedW.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
-        }
-
-        private void EnglishWordsCriteria_Click(object sender, EventArgs e)
-        {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
-        }
-
-        private void WLengh_Click(object sender, EventArgs e)
-        {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
-        }
-
-        private void LengthRangeCriteria_Click(object sender, EventArgs e)
-        {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
-        }
-
-        private void WCombination_Click(object sender, EventArgs e)
-        {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            GivenW.Enabled = false;
-        }
-
-        private void GivenW_Click(object sender, EventArgs e)
-        {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-        }
-
-        private void SearchInFilesCriteria_Click(object sender, EventArgs e)
-        {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
-        }
-
         private void Browse_Click(object sender, EventArgs e)
         {
             if (FolderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 SourceDirectory.Text = FolderBrowserDialog.SelectedPath;
             }
-        }
-
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void OpenText_Click(object sender, EventArgs e)
@@ -441,6 +442,88 @@ namespace WordsSearchEngine
             SaveText.Enabled = textSourceValue;
             SourceDirectory.Enabled = !textSourceValue;
             Browse.Enabled = !textSourceValue;
+        }
+
+        private void CapitalizedW_CheckedChanged(object sender, EventArgs e)
+        {
+            SearchInFilesCriteria.Enabled = false;
+            AbbreviationW.Enabled = false;
+            EnglishWordsCriteria.Enabled = false;
+            WLenght.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
+        }
+
+        private void AbbreviationW_CheckedChanged(object sender, EventArgs e)
+        {
+            CapitalizedW.Enabled = false;
+            SearchInFilesCriteria.Enabled = false;
+            EnglishWordsCriteria.Enabled = false;
+            WLenght.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
+        }
+
+        private void EnglishWordsCriteria_CheckedChanged(object sender, EventArgs e)
+        {
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
+            SearchInFilesCriteria.Enabled = false;
+            WLenght.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
+        }
+
+        private void WLenght_CheckedChanged(object sender, EventArgs e)
+        {
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
+            EnglishWordsCriteria.Enabled = false;
+            SearchInFilesCriteria.Enabled = false;
+            WCombination.Enabled = false;
+            GivenW.Enabled = false;
+        }
+
+        private void WCombination_CheckedChanged(object sender, EventArgs e)
+        {
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
+            EnglishWordsCriteria.Enabled = false;
+            WLenght.Enabled = false;
+            SearchInFilesCriteria.Enabled = false;
+            GivenW.Enabled = false;
+        }
+
+        private void GivenW_CheckedChanged(object sender, EventArgs e)
+        {
+            CapitalizedW.Enabled = false;
+            AbbreviationW.Enabled = false;
+            EnglishWordsCriteria.Enabled = false;
+            WLenght.Enabled = false;
+            WCombination.Enabled = false;
+            SearchInFilesCriteria.Enabled = false;
+        }
+
+        private void SaveText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveResult_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(@"Вы действительно хотите выйти ?",
+                        @"Выход", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            Application.Exit();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

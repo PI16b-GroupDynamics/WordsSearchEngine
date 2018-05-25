@@ -15,6 +15,14 @@ namespace WordsSearchEngine
         public Form5()
         {
             InitializeComponent();
+            _mainform = new Form1();
+        }
+
+        private readonly Form1 _mainform;
+
+        private void Start_Click(object sender, EventArgs e)
+        {
+            _mainform.ShowDialog();
         }
     }
 }

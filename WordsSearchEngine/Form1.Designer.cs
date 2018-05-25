@@ -37,7 +37,6 @@
             this.LoadFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveInFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ParametrsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InstructionStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProgrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +65,8 @@
             this.DirectoryText = new System.Windows.Forms.Label();
             this.SearchInTextCriteria = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -131,19 +132,11 @@
             // 
             // ParamsToolStripMenuItem
             // 
-            this.ParamsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ParametrsToolStripMenuItem});
             this.ParamsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ParamsToolStripMenuItem.Name = "ParamsToolStripMenuItem";
             this.ParamsToolStripMenuItem.Size = new System.Drawing.Size(83, 21);
             this.ParamsToolStripMenuItem.Text = "Настройки";
-            // 
-            // ParametrsToolStripMenuItem
-            // 
-            this.ParametrsToolStripMenuItem.Name = "ParametrsToolStripMenuItem";
-            this.ParametrsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ParametrsToolStripMenuItem.Text = "Параметры";
-            this.ParametrsToolStripMenuItem.Click += new System.EventHandler(this.параметрыToolStripMenuItem_Click);
+            this.ParamsToolStripMenuItem.Click += new System.EventHandler(this.ParamsToolStripMenuItem_Click);
             // 
             // HelpToolStripMenuItem
             // 
@@ -416,12 +409,12 @@
             this.SearchInTextCriteria.AutoSize = true;
             this.SearchInTextCriteria.Checked = true;
             this.SearchInTextCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SearchInTextCriteria.Location = new System.Drawing.Point(12, 37);
+            this.SearchInTextCriteria.Location = new System.Drawing.Point(12, 33);
             this.SearchInTextCriteria.Name = "SearchInTextCriteria";
-            this.SearchInTextCriteria.Size = new System.Drawing.Size(192, 20);
+            this.SearchInTextCriteria.Size = new System.Drawing.Size(124, 20);
             this.SearchInTextCriteria.TabIndex = 26;
             this.SearchInTextCriteria.TabStop = true;
-            this.SearchInTextCriteria.Text = "Поиск в заданном тексте";
+            this.SearchInTextCriteria.Text = "Поиск в тексте";
             this.SearchInTextCriteria.UseVisualStyleBackColor = true;
             this.SearchInTextCriteria.CheckedChanged += new System.EventHandler(this.SearchInTextCriteria_CheckedChanged);
             // 
@@ -435,11 +428,31 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Результаты поиска:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(152, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Имя текста:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(242, 33);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(150, 22);
+            this.textBox1.TabIndex = 29;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 388);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchInTextCriteria);
             this.Controls.Add(this.DirectoryText);
@@ -457,6 +470,7 @@
             this.Controls.Add(this.Search);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "     ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -497,7 +511,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button SaveResult;
         private System.Windows.Forms.Button OpenText;
-        private System.Windows.Forms.ToolStripMenuItem ParametrsToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.RadioButton SearchInFilesCriteria;
@@ -505,6 +518,8 @@
         private System.Windows.Forms.RadioButton SearchInTextCriteria;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

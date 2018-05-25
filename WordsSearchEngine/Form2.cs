@@ -24,5 +24,10 @@ namespace WordsSearchEngine
         {
             form3.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -38,7 +38,6 @@ namespace WordsSearchEngine
 
         private void параметрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _settingsForm.ShowDialog();
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -516,14 +515,21 @@ namespace WordsSearchEngine
 
         private void ExitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(@"Вы действительно хотите выйти ?",
-                        @"Выход", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-            Application.Exit();
+            if (DialogResult.Yes == MessageBox.Show(@"Вы действительно хотите выйти ?",
+                        @"Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+            {
+                Application.Exit();
+            }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void ParamsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _settingsForm.ShowDialog();
         }
     }
 }

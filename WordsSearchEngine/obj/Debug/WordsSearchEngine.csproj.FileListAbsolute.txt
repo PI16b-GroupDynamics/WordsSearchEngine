@@ -68,3 +68,17 @@ C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debu
 C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
 C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe.config
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form2.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form3.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form5.resources

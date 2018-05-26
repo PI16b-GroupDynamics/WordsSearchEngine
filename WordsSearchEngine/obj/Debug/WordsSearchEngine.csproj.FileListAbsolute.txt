@@ -82,3 +82,6 @@ C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\De
 C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
 C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
 C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form5.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.pdfa.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.xtra.dll

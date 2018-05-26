@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -56,7 +57,7 @@ namespace WordsSearchEngine
             {
                 // Получаем список всех слов исходного текста.
                 _resultList = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
-               // _originaltxt = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToDictionary();
+                // _originaltxt = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToDictionary();
                 _resultfileList.Clear();
 
                 if (CheckAllCriteria()) // Проверяем текст на наличие слов.
@@ -204,10 +205,10 @@ namespace WordsSearchEngine
             foreach (string file in files)
             {
                 // Получаем список слов файла.
-                _resultList = File.ReadAllText(SourceDirectory.Text + "\\" + file, 
+                _resultList = File.ReadAllText(SourceDirectory.Text + "\\" + file,
                     Encoding.GetEncoding(1251)).Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
-                
-                if(CheckAllCriteria())
+
+                if (CheckAllCriteria())
                     AppendResultFilesList(file, _resultList);
             }
 
@@ -247,7 +248,7 @@ namespace WordsSearchEngine
 
             foreach (string word in wordList)
                 _resultfileList.Add(word);
-            
+
             _resultfileList.Add("");
         }
 
@@ -269,7 +270,7 @@ namespace WordsSearchEngine
 
         void Abbreviation(List<string> words)
         {
-            _resultList= new List<string>();
+            _resultList = new List<string>();
             string tmp = "";
 
             foreach (var word in words)
@@ -507,7 +508,28 @@ namespace WordsSearchEngine
 
         private void SaveText_Click(object sender, EventArgs e)
         {
+            SaveFileDialog sfd = new SaveFileDialog();
 
+            sfd.Title = "Сохранить как PDF";
+            sfd.Filter = "(*.pdf)|*.pdf";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (OriginalText.Text != "")
+                {
+                    iTextSharp.text.Document doc = new iTextSharp.text.Document();
+                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                    doc.Open();
+                    doc.Add(new iTextSharp.text.Paragraph(OriginalText.Text));
+                    doc.Close();
+                    MessageBox.Show("Текст успешно сохранен в PDF", "Оповещение");
+                }
+                else
+                {
+                    MessageBox.Show("Поле пусто. Сохранять в PDF нечего", "Оповещение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
         }
 
         private void SaveResult_Click(object sender, EventArgs e)
@@ -547,6 +569,45 @@ namespace WordsSearchEngine
             {
                 OriginalText.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //_settingsForm.checkBox1.Checked = false;
+            //_settingsForm.checkBox4.Checked = false;
+            //_settingsForm.checkBox5.Checked = false;
+            //_settingsForm.textBox1.Text = Application.StartupPath + @"//Results";
+        }
+
+        private void SaveInFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Title = "Сохранить как PDF";
+            sfd.Filter = "(*.pdf)|*.pdf";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (OriginalText.Text != "")
+                {
+                    iTextSharp.text.Document doc = new iTextSharp.text.Document();
+                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                    doc.Open();
+                    doc.Add(new iTextSharp.text.Paragraph(OriginalText.Text));
+                    doc.Close();
+                    MessageBox.Show("Текст успешно сохранен в PDF", "Оповещение");
+                }
+                else
+                {
+                    MessageBox.Show("Поле пусто. Сохранять в PDF нечего", "Оповещение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void SaveInFileResultTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

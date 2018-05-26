@@ -53,14 +53,14 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(481, 154);
+            this.groupBox1.Size = new System.Drawing.Size(677, 154);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры файла результатов";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(373, 116);
+            this.button1.Location = new System.Drawing.Point(574, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 25);
             this.button1.TabIndex = 9;
@@ -71,7 +71,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(131, 118);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 22);
+            this.textBox1.Size = new System.Drawing.Size(437, 22);
             this.textBox1.TabIndex = 8;
             // 
             // label3
@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 177);
+            this.ClientSize = new System.Drawing.Size(701, 177);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form4";
@@ -151,12 +151,12 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.CheckBox checkBox5;
+        public System.Windows.Forms.CheckBox checkBox4;
     }
 }

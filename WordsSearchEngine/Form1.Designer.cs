@@ -67,6 +67,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TextName = new System.Windows.Forms.TextBox();
+            this.SaveInFileResultText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -111,7 +112,8 @@
             // 
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LoadFromFileToolStripMenuItem,
-            this.SaveInFileToolStripMenuItem});
+            this.SaveInFileToolStripMenuItem,
+            this.SaveInFileResultText});
             this.FileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
@@ -120,15 +122,16 @@
             // LoadFromFileToolStripMenuItem
             // 
             this.LoadFromFileToolStripMenuItem.Name = "LoadFromFileToolStripMenuItem";
-            this.LoadFromFileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.LoadFromFileToolStripMenuItem.Text = "Загрузить из файла";
+            this.LoadFromFileToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
+            this.LoadFromFileToolStripMenuItem.Text = "Загрузить из файла текст";
             this.LoadFromFileToolStripMenuItem.Click += new System.EventHandler(this.LoadFromFileToolStripMenuItem_Click);
             // 
             // SaveInFileToolStripMenuItem
             // 
             this.SaveInFileToolStripMenuItem.Name = "SaveInFileToolStripMenuItem";
-            this.SaveInFileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.SaveInFileToolStripMenuItem.Text = "Сохранить в файл";
+            this.SaveInFileToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
+            this.SaveInFileToolStripMenuItem.Text = "Сохранить в файл текст";
+            this.SaveInFileToolStripMenuItem.Click += new System.EventHandler(this.SaveInFileToolStripMenuItem_Click_1);
             // 
             // ParamsToolStripMenuItem
             // 
@@ -448,6 +451,13 @@
             this.TextName.Size = new System.Drawing.Size(150, 22);
             this.TextName.TabIndex = 29;
             // 
+            // SaveInFileResultText
+            // 
+            this.SaveInFileResultText.Name = "SaveInFileResultText";
+            this.SaveInFileResultText.Size = new System.Drawing.Size(291, 22);
+            this.SaveInFileResultText.Text = "Сохранить в файл результат поиска";
+            this.SaveInFileResultText.Click += new System.EventHandler(this.SaveInFileResultText_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,6 +532,7 @@
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TextName;
+        private System.Windows.Forms.ToolStripMenuItem SaveInFileResultText;
     }
 }
 

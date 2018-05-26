@@ -30,7 +30,6 @@ C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\Wor
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
-C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form2.resources
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form3.resources
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
@@ -85,3 +84,4 @@ C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\De
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.dll
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.pdfa.dll
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.xtra.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources

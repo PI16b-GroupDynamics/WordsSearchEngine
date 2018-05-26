@@ -16,7 +16,12 @@ namespace WordsSearchEngine
         {
             InitializeComponent();
             _authorizationForm = new Form2();
+
             _settingsForm = new Form4();
+            _settingsForm.checkBox1.Checked = false;
+            _settingsForm.checkBox4.Checked = false;
+            _settingsForm.checkBox5.Checked = true;
+            _settingsForm.textBox1.Text = Application.StartupPath + @"\Results";
 
             SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
             _separators = new[] { ' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '%', '\\', '/' };
@@ -26,7 +31,7 @@ namespace WordsSearchEngine
         }
 
         private readonly Form2 _authorizationForm;
-        private readonly Form4 _settingsForm;
+        Form4 _settingsForm;
 
         private readonly char[] _separators; // Список возможных разделителей в исходном тексте.
         private List<string> _resultList;
@@ -571,14 +576,6 @@ namespace WordsSearchEngine
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //_settingsForm.checkBox1.Checked = false;
-            //_settingsForm.checkBox4.Checked = false;
-            //_settingsForm.checkBox5.Checked = false;
-            //_settingsForm.textBox1.Text = Application.StartupPath + @"//Results";
-        }
-
         private void SaveInFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -606,6 +603,37 @@ namespace WordsSearchEngine
         }
 
         private void SaveInFileResultTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveInFileToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Title = "Сохранить как PDF";
+            sfd.Filter = "(*.pdf)|*.pdf";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (OriginalText.Text != "")
+                {
+                    iTextSharp.text.Document doc = new iTextSharp.text.Document();
+                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                    doc.Open();
+                    doc.Add(new iTextSharp.text.Paragraph(OriginalText.Text));
+                    doc.Close();
+                    MessageBox.Show("Текст успешно сохранен в PDF", "Оповещение");
+                }
+                else
+                {
+                    MessageBox.Show("Поле пусто. Сохранять в PDF нечего", "Оповещение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void SaveInFileResultText_Click(object sender, EventArgs e)
         {
 
         }

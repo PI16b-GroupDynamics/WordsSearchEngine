@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace WordsSearchEngine
             SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
             _separators = new[] { ' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '%', '\\', '/' };
             _resultList = new List<string>();
-            _resultListOT = new List<string>();
             _resultfileList = new List<string>();
+            _originaltxt = new Dictionary<int, string>();
         }
 
         private readonly Form2 _authorizationForm;
@@ -28,8 +29,8 @@ namespace WordsSearchEngine
 
         private readonly char[] _separators; // Список возможных разделителей в исходном тексте.
         private List<string> _resultList;
-        private List<string> _resultListOT;
         private List<string> _resultfileList;
+        private Dictionary<int, string> _originaltxt;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -55,7 +56,7 @@ namespace WordsSearchEngine
             {
                 // Получаем список всех слов исходного текста.
                 _resultList = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
-                _resultListOT = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
+               // _originaltxt = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToDictionary();
                 _resultfileList.Clear();
 
                 if (CheckAllCriteria()) // Проверяем текст на наличие слов.
@@ -436,6 +437,7 @@ namespace WordsSearchEngine
         {
             // Изменяем доступ к элементам управления в зависимости
             // от источника поиска (заданный текст или тексты в файлах).
+            TextName.Enabled = textSourceValue;
             OriginalText.Enabled = textSourceValue;
             OpenText.Enabled = textSourceValue;
             SaveText.Enabled = textSourceValue;
@@ -522,14 +524,29 @@ namespace WordsSearchEngine
             }
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void ParamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _settingsForm.ShowDialog();
+        }
+
+        private void InstructionStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(Application.StartupPath + "//HTML/Spravka.htm");
+        }
+
+        private void ProgrammToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(Application.StartupPath + "//HTML/About_prg.htm");
+        }
+
+        private void LoadFromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                OriginalText.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
+            }
         }
     }
 }

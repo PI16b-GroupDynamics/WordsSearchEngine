@@ -66,7 +66,7 @@
             this.SearchInTextCriteria = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextName = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -106,7 +106,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(863, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // FileToolStripMenuItem
             // 
@@ -123,6 +122,7 @@
             this.LoadFromFileToolStripMenuItem.Name = "LoadFromFileToolStripMenuItem";
             this.LoadFromFileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.LoadFromFileToolStripMenuItem.Text = "Загрузить из файла";
+            this.LoadFromFileToolStripMenuItem.Click += new System.EventHandler(this.LoadFromFileToolStripMenuItem_Click);
             // 
             // SaveInFileToolStripMenuItem
             // 
@@ -153,12 +153,14 @@
             this.InstructionStripMenuItem.Name = "InstructionStripMenuItem";
             this.InstructionStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.InstructionStripMenuItem.Text = "Инструкция";
+            this.InstructionStripMenuItem.Click += new System.EventHandler(this.InstructionStripMenuItem_Click);
             // 
             // ProgrammToolStripMenuItem
             // 
             this.ProgrammToolStripMenuItem.Name = "ProgrammToolStripMenuItem";
             this.ProgrammToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.ProgrammToolStripMenuItem.Text = "О программе";
+            this.ProgrammToolStripMenuItem.Click += new System.EventHandler(this.ProgrammToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem1
             // 
@@ -438,20 +440,20 @@
             this.label2.TabIndex = 28;
             this.label2.Text = "Имя текста:";
             // 
-            // textBox1
+            // TextName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(242, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 22);
-            this.textBox1.TabIndex = 29;
+            this.TextName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextName.Location = new System.Drawing.Point(242, 33);
+            this.TextName.Name = "TextName";
+            this.TextName.Size = new System.Drawing.Size(150, 22);
+            this.TextName.TabIndex = 29;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 388);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TextName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchInTextCriteria);
@@ -519,7 +521,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TextName;
     }
 }
 

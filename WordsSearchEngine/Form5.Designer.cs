@@ -95,16 +95,16 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(510, 41);
+            this.label4.Location = new System.Drawing.Point(509, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(405, 288);
+            this.label4.Size = new System.Drawing.Size(361, 288);
             this.label4.TabIndex = 5;
             this.label4.Text = resources.GetString("label4.Text");
             // 
             // Start
             // 
             this.Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Start.Location = new System.Drawing.Point(808, 309);
+            this.Start.Location = new System.Drawing.Point(770, 309);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(90, 35);
             this.Start.TabIndex = 6;
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 356);
+            this.ClientSize = new System.Drawing.Size(872, 356);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

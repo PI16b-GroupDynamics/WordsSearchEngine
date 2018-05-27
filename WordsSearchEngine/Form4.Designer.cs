@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Обзор...";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -131,6 +133,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Имя:";
             // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.folderBrowserDialog1.ShowNewFolderButton = false;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,5 +165,6 @@
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.CheckBox checkBox5;
         public System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.OriginalText = new System.Windows.Forms.RichTextBox();
             this.FoundWords = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveInFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveInFileResultText = new System.Windows.Forms.ToolStripMenuItem();
             this.ParamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InstructionStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +59,7 @@
             this.SaveResult = new System.Windows.Forms.Button();
             this.OpenText = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.OriginalText = new System.Windows.Forms.RichTextBox();
             this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SearchInFilesCriteria = new System.Windows.Forms.RadioButton();
@@ -67,21 +68,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TextName = new System.Windows.Forms.TextBox();
-            this.SaveInFileResultText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // OriginalText
-            // 
-            this.OriginalText.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OriginalText.Location = new System.Drawing.Point(14, 63);
-            this.OriginalText.Name = "OriginalText";
-            this.OriginalText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.OriginalText.Size = new System.Drawing.Size(468, 261);
-            this.OriginalText.TabIndex = 0;
-            this.OriginalText.Text = "";
-            this.toolTip1.SetToolTip(this.OriginalText, "Поле исходного текста");
             // 
             // FoundWords
             // 
@@ -132,6 +121,13 @@
             this.SaveInFileToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.SaveInFileToolStripMenuItem.Text = "Сохранить в файл текст";
             this.SaveInFileToolStripMenuItem.Click += new System.EventHandler(this.SaveInFileToolStripMenuItem_Click_1);
+            // 
+            // SaveInFileResultText
+            // 
+            this.SaveInFileResultText.Name = "SaveInFileResultText";
+            this.SaveInFileResultText.Size = new System.Drawing.Size(291, 22);
+            this.SaveInFileResultText.Text = "Сохранить в файл результат поиска";
+            this.SaveInFileResultText.Click += new System.EventHandler(this.SaveInFileResultText_Click);
             // 
             // ParamsToolStripMenuItem
             // 
@@ -377,6 +373,17 @@
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // OriginalText
+            // 
+            this.OriginalText.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OriginalText.Location = new System.Drawing.Point(14, 63);
+            this.OriginalText.Name = "OriginalText";
+            this.OriginalText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.OriginalText.Size = new System.Drawing.Size(468, 261);
+            this.OriginalText.TabIndex = 0;
+            this.OriginalText.Text = "";
+            this.toolTip1.SetToolTip(this.OriginalText, "Поле исходного текста");
+            // 
             // FolderBrowserDialog
             // 
             this.FolderBrowserDialog.Description = "Определение каталога для поиска слов в файлах";
@@ -451,13 +458,6 @@
             this.TextName.Size = new System.Drawing.Size(150, 22);
             this.TextName.TabIndex = 29;
             // 
-            // SaveInFileResultText
-            // 
-            this.SaveInFileResultText.Name = "SaveInFileResultText";
-            this.SaveInFileResultText.Size = new System.Drawing.Size(291, 22);
-            this.SaveInFileResultText.Text = "Сохранить в файл результат поиска";
-            this.SaveInFileResultText.Click += new System.EventHandler(this.SaveInFileResultText_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,8 +494,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.RichTextBox OriginalText;
         private System.Windows.Forms.RichTextBox FoundWords;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
@@ -533,6 +531,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TextName;
         private System.Windows.Forms.ToolStripMenuItem SaveInFileResultText;
+        private System.Windows.Forms.RichTextBox OriginalText;
     }
 }
 

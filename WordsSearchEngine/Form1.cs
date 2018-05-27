@@ -1,4 +1,5 @@
-﻿using iTextSharp.text.pdf;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -58,10 +59,6 @@ namespace WordsSearchEngine
             _authorizationForm.ShowDialog();
         }
 
-        private void параметрыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
         private void Search_Click(object sender, EventArgs e)
         {
             Search.Enabled = false;
@@ -84,9 +81,9 @@ namespace WordsSearchEngine
                 {
                     FoundWords.Clear();
                     // Выводим список найденных слов/наименований файлов в окно результата.
+                    MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     foreach (string word in _resultList)
                     {
-                        MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FoundWords.Text += word + Environment.NewLine;
                     }
                 }
@@ -102,10 +99,10 @@ namespace WordsSearchEngine
                 if (_resultfileList.Count != 0)
                 {
                     FoundWords.Clear();
+                    MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Выводим список наименований файлов в окно результата.
                     foreach (string word in _resultfileList)
                     {
-                        MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FoundWords.Text += word + Environment.NewLine;
                     }
                 }
@@ -554,7 +551,84 @@ namespace WordsSearchEngine
 
         private void SaveResult_Click(object sender, EventArgs e)
         {
+            string ResFileName = null;
+            string ResFileNameIn = null;
+            string ResFileCritStr = null;
+            string[] ResFileCrit = new string[6];
+            if (_settingsForm.checkBox1.Checked == true)
+            {
+                if(TextName.Text != "")
+                {
+                    ResFileName = TextName.Text;
+                }
+                else
+                {
+                    MessageBox.Show(@"Укажите имя текста",
+                        @"Оповещание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
+            if (_settingsForm.checkBox4.Checked == true)
+            {
+                if (TextName.Text != "")
+                {
+                    ResFileNameIn = "Имя текста: " + TextName.Text;
+                }
+                else
+                {
+                    MessageBox.Show(@"Укажите имя текста",
+                        @"Оповещание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else { ResFileNameIn = "Имя текста: " + "-"; }
+
+            if (_settingsForm.checkBox5.Checked == true)
+            {
+                if (CapitalizedW.Checked == true) { ResFileCrit[0] = "Слова с прописной буквы, "; }
+                if (AbbreviationW.Checked == true) { ResFileCrit[1] = "Аббревиатуры, "; }
+                if (EnglishWordsCriteria.Checked == true) { ResFileCrit[2] = "Английские слова, "; }
+                if (WLenght.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
+                if (WCombination.Checked == true) { ResFileCrit[4] = "Комбинация слов: " + CombinationValue.Text + ", "; }
+                if (GivenW.Checked == true) { ResFileCrit[5] = "Заданное слово: " + WordValue.Text + ", "; }
+
+                for (int i = 0; i < ResFileCrit.Length; i++)
+                {
+                    if (ResFileCrit[i] == null)
+                    {
+                        ResFileCrit[i] = "-, ";
+                    }
+                }
+
+                ResFileCritStr = "Критерии поиска: " + string.Concat(ResFileCrit);
+            }
+            else { ResFileCritStr = "Критерии поиска: " + "-"; }
+
+            Document document = new Document();
+            try
+            {
+                BaseFont baseFont = BaseFont.CreateFont(Application.StartupPath + @"\System\ARIAL.TTF", Encoding.GetEncoding(1251).BodyName, BaseFont.NOT_EMBEDDED);
+                iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
+                using (FileStream stream = new FileStream(Application.StartupPath + @"\Results\Test1.pdf", FileMode.Create))
+                {
+                    PdfWriter.GetInstance(document, stream);
+                    document.Open();
+                    document.Add(new Paragraph(ResFileNameIn, font));
+                    document.Add(new Paragraph(ResFileCritStr, font));
+                    document.Add(new Paragraph(FoundWords.Text, font));
+                    document.Close();
+
+                    MessageBox.Show("Результирующий PDF готов.", "Оповещение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (DocumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void ExitToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -615,11 +689,6 @@ namespace WordsSearchEngine
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-        }
-
-        private void SaveInFileResultTextToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void SaveInFileToolStripMenuItem_Click_1(object sender, EventArgs e)

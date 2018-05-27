@@ -23,6 +23,7 @@ namespace WordsSearchEngine
             _settingsForm.checkBox5.Checked = true;
             _settingsForm.textBox1.Text = Application.StartupPath + @"\Results";
 
+            ToolsFile();
             SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
             _separators = new[] { ' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '%', '\\', '/' };
             _resultList = new List<string>();
@@ -37,6 +38,20 @@ namespace WordsSearchEngine
         private List<string> _resultList;
         private List<string> _resultfileList;
         private Dictionary<int, string> _originaltxt;
+
+        public void ToolsFile()
+        {
+            string path = @"System";
+            string fullPath = Path.GetFullPath(path) + "\\Tools.dat";
+            string toRes = Application.StartupPath + @"\Results";
+            string[] tools = new string[] { "false", "false", "true", toRes };
+            // This text is added only once to the file.
+            if (!File.Exists(fullPath))
+            {
+                // Create a file to write to.
+                File.WriteAllLines(fullPath, tools, Encoding.UTF8);
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {

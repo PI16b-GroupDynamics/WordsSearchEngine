@@ -44,9 +44,7 @@ F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.e
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
-F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form2.resources
-F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form3.resources
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form5.resources
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Properties.Resources.resources
@@ -54,3 +52,16 @@ F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.c
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Users.db
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\EntityFramework.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\EntityFramework.SqlServer.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\System.Data.SQLite.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\System.Data.SQLite.EF6.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\System.Data.SQLite.Linq.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\EntityFramework.xml
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\EntityFramework.SqlServer.xml
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\System.Data.SQLite.xml
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\System.Data.SQLite.dll.config
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CopyComplete
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Registration.resources
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.MainForm.resources

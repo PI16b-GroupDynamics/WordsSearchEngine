@@ -15,10 +15,10 @@ namespace WordsSearchEngine
         public Form2()
         {
             InitializeComponent();
-            form3 = new Form3();
+            form3 = new Registration();
         }
 
-        private Form3 form3;
+        private Registration form3;
 
         private void button3_Click(object sender, EventArgs e)
         {

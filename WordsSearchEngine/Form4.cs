@@ -19,10 +19,22 @@ namespace WordsSearchEngine
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if (FolderBrowserDialog1.ShowDialog() == DialogResult.OK)
-            //{
-              //  textBox1.Text = FolderBrowserDialog1.SelectedPath;
-            //}
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true) { MessageBox.Show(@"Не забудьте указать имя текста",
+                @"Оповещание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked == true) { MessageBox.Show(@"Не забудьте указать имя текста",
+                @"Оповещание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
         }
     }
 }

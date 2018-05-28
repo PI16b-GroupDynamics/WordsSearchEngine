@@ -104,6 +104,7 @@
             this.checkBox4.TabIndex = 5;
             this.checkBox4.Text = "Указать название текста";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // label2
             // 
@@ -123,6 +124,7 @@
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Имя текста";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label1
             // 

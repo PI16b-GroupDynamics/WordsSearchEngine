@@ -557,14 +557,9 @@ namespace WordsSearchEngine
             string[] ResFileCrit = new string[6];
             if (_settingsForm.checkBox1.Checked == true)
             {
-                if(TextName.Text != "")
+                if (TextName.Text != "")
                 {
                     ResFileName = TextName.Text;
-                }
-                else
-                {
-                    MessageBox.Show(@"Укажите имя текста",
-                        @"Оповещание", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -574,13 +569,7 @@ namespace WordsSearchEngine
                 {
                     ResFileNameIn = "Имя текста: " + TextName.Text;
                 }
-                else
-                {
-                    MessageBox.Show(@"Укажите имя текста",
-                        @"Оповещание", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-            else { ResFileNameIn = "Имя текста: " + "-"; }
 
             if (_settingsForm.checkBox5.Checked == true)
             {
@@ -601,23 +590,25 @@ namespace WordsSearchEngine
 
                 ResFileCritStr = "Критерии поиска: " + string.Concat(ResFileCrit);
             }
-            else { ResFileCritStr = "Критерии поиска: " + "-"; }
 
             Document document = new Document();
             try
             {
+                string FileName = @"\Text.pdf";
+                if (_settingsForm.checkBox1.Checked == true) { FileName = @"\" + TextName.Text + ".pdf"; }
+                string FilePath = _settingsForm.textBox1.Text + FileName;
                 BaseFont baseFont = BaseFont.CreateFont(Application.StartupPath + @"\System\ARIAL.TTF", Encoding.GetEncoding(1251).BodyName, BaseFont.NOT_EMBEDDED);
                 iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
-                using (FileStream stream = new FileStream(Application.StartupPath + @"\Results\Test1.pdf", FileMode.Create))
+                using (FileStream stream = new FileStream(FilePath, FileMode.Create))
                 {
                     PdfWriter.GetInstance(document, stream);
                     document.Open();
-                    document.Add(new Paragraph(ResFileNameIn, font));
-                    document.Add(new Paragraph(ResFileCritStr, font));
+                    if (_settingsForm.checkBox4.Checked == true) { document.Add(new Paragraph(ResFileNameIn, font)); }
+                    if (_settingsForm.checkBox5.Checked == true) { document.Add(new Paragraph(ResFileCritStr, font)); }
                     document.Add(new Paragraph(FoundWords.Text, font));
                     document.Close();
 
-                    MessageBox.Show("Результирующий PDF готов.", "Оповещение",
+                    MessageBox.Show("Результирующий файл " + FileName + " сохранен", "Оповещение",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -719,7 +710,75 @@ namespace WordsSearchEngine
 
         private void SaveInFileResultText_Click(object sender, EventArgs e)
         {
+            string ResFileName = null;
+            string ResFileNameIn = null;
+            string ResFileCritStr = null;
+            string[] ResFileCrit = new string[6];
+            if (_settingsForm.checkBox1.Checked == true)
+            {
+                if (TextName.Text != "")
+                {
+                    ResFileName = TextName.Text;
+                }
+            }
 
+            if (_settingsForm.checkBox4.Checked == true)
+            {
+                if (TextName.Text != "")
+                {
+                    ResFileNameIn = "Имя текста: " + TextName.Text;
+                }
+            }
+
+            if (_settingsForm.checkBox5.Checked == true)
+            {
+                if (CapitalizedW.Checked == true) { ResFileCrit[0] = "Слова с прописной буквы, "; }
+                if (AbbreviationW.Checked == true) { ResFileCrit[1] = "Аббревиатуры, "; }
+                if (EnglishWordsCriteria.Checked == true) { ResFileCrit[2] = "Английские слова, "; }
+                if (WLenght.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
+                if (WCombination.Checked == true) { ResFileCrit[4] = "Комбинация слов: " + CombinationValue.Text + ", "; }
+                if (GivenW.Checked == true) { ResFileCrit[5] = "Заданное слово: " + WordValue.Text + ", "; }
+
+                for (int i = 0; i < ResFileCrit.Length; i++)
+                {
+                    if (ResFileCrit[i] == null)
+                    {
+                        ResFileCrit[i] = "-, ";
+                    }
+                }
+
+                ResFileCritStr = "Критерии поиска: " + string.Concat(ResFileCrit);
+            }
+
+            Document document = new Document();
+            try
+            {
+                string FileName = @"\Text.pdf";
+                if (_settingsForm.checkBox1.Checked == true) { FileName = @"\" + TextName.Text + ".pdf"; }
+                string FilePath = _settingsForm.textBox1.Text + FileName;
+                BaseFont baseFont = BaseFont.CreateFont(Application.StartupPath + @"\System\ARIAL.TTF", Encoding.GetEncoding(1251).BodyName, BaseFont.NOT_EMBEDDED);
+                iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
+                using (FileStream stream = new FileStream(FilePath, FileMode.Create))
+                {
+                    PdfWriter.GetInstance(document, stream);
+                    document.Open();
+                    if (_settingsForm.checkBox4.Checked == true) { document.Add(new Paragraph(ResFileNameIn, font)); }
+                    if (_settingsForm.checkBox5.Checked == true) { document.Add(new Paragraph(ResFileCritStr, font)); }
+                    document.Add(new Paragraph(FoundWords.Text, font));
+                    document.Close();
+
+                    MessageBox.Show("Результирующий файл " + FileName + " сохранен", "Оповещение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (DocumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

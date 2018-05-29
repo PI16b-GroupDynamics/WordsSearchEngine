@@ -16,7 +16,11 @@ namespace WordsSearchEngine
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new Form5());
+=======
+            Application.Run(new MainForm());
+>>>>>>> authorization
         }
     }
 }

@@ -465,6 +465,7 @@ namespace WordsSearchEngine
             Browse.Enabled = !textSourceValue;
         }
 
+        // Проверка на совместимость выбранных критериев.
         private void CheckCriteriaIntegrity()
         {
             if (CapitalizedW.Checked || AbbreviationW.Checked || EnglishWordsCriteria.Checked ||

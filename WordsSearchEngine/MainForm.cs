@@ -14,7 +14,7 @@ namespace WordsSearchEngine
         {
             InitializeComponent();
 
-            _authorizationForm = new Form2();
+            _authorizationForm = new Authorization { Owner = this };
             _settingsForm = new Form4();
             
             SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
@@ -23,9 +23,9 @@ namespace WordsSearchEngine
             _resultfileList = new List<string>();
         }
 
-        public static SQLiteConnection UserDB;
+        public static SQLiteConnection UserDb;
 
-        private readonly Form2 _authorizationForm;
+        private readonly Authorization _authorizationForm;
         private readonly Form4 _settingsForm;
 
         private readonly char[] _separators; // Список возможных разделителей в исходном тексте.
@@ -35,10 +35,10 @@ namespace WordsSearchEngine
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Устанавливаем связь с базой данных.
-            UserDB = new SQLiteConnection("Data Source=Users.db; Version=3");
+            UserDb = new SQLiteConnection("Data Source=Users.db; Version=3");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SignUp_Click(object sender, EventArgs e)
         {
             _authorizationForm.ShowDialog();
         }
@@ -422,8 +422,7 @@ namespace WordsSearchEngine
 
         private void OpenText_Click(object sender, EventArgs e)
         {
-            openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1 = new OpenFileDialog {Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*"};
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 OriginalText.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.Default);

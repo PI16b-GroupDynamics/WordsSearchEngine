@@ -42,7 +42,7 @@
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.описаниеПрогграммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SignUp = new System.Windows.Forms.Button();
             this.SaveText = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.WordValue = new System.Windows.Forms.TextBox();
@@ -166,18 +166,18 @@
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
-            // button1
+            // SignUp
             // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(725, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Вход";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SignUp.BackColor = System.Drawing.Color.Gainsboro;
+            this.SignUp.FlatAppearance.BorderSize = 0;
+            this.SignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SignUp.Location = new System.Drawing.Point(725, 0);
+            this.SignUp.Name = "SignUp";
+            this.SignUp.Size = new System.Drawing.Size(138, 23);
+            this.SignUp.TabIndex = 3;
+            this.SignUp.Text = "Вход";
+            this.SignUp.UseVisualStyleBackColor = false;
+            this.SignUp.Click += new System.EventHandler(this.SignUp_Click);
             // 
             // SaveText
             // 
@@ -409,13 +409,14 @@
             this.Controls.Add(this.SaveResult);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.SaveText);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SignUp);
             this.Controls.Add(this.FoundWords);
             this.Controls.Add(this.OriginalText);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Search);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Words Search Engine";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -435,7 +436,6 @@
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button SaveText;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox WLenght;
@@ -465,6 +465,7 @@
         private System.Windows.Forms.Label DirectoryText;
         private System.Windows.Forms.RadioButton SearchInTextCriteria;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button SignUp;
     }
 }
 

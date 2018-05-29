@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Password = new System.Windows.Forms.TextBox();
             this.Login = new System.Windows.Forms.TextBox();
             this.UserName = new System.Windows.Forms.TextBox();
             this.TPassword = new System.Windows.Forms.Label();
@@ -38,77 +37,80 @@
             this.TConfirmation = new System.Windows.Forms.Label();
             this.Accept = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
+            this.Password = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // Password
-            // 
-            this.Password.Location = new System.Drawing.Point(133, 84);
-            this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(236, 20);
-            this.Password.TabIndex = 11;
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(133, 52);
+            this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Login.Location = new System.Drawing.Point(186, 59);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(236, 20);
+            this.Login.Size = new System.Drawing.Size(267, 26);
             this.Login.TabIndex = 10;
             // 
             // UserName
             // 
-            this.UserName.Location = new System.Drawing.Point(133, 22);
+            this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.UserName.Location = new System.Drawing.Point(186, 24);
             this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(236, 20);
+            this.UserName.Size = new System.Drawing.Size(267, 26);
             this.UserName.TabIndex = 9;
             // 
             // TPassword
             // 
             this.TPassword.AutoSize = true;
-            this.TPassword.Location = new System.Drawing.Point(27, 89);
+            this.TPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TPassword.Location = new System.Drawing.Point(24, 102);
             this.TPassword.Name = "TPassword";
-            this.TPassword.Size = new System.Drawing.Size(48, 13);
+            this.TPassword.Size = new System.Drawing.Size(71, 20);
             this.TPassword.TabIndex = 8;
             this.TPassword.Text = "Пароль:";
             // 
             // TLogin
             // 
             this.TLogin.AutoSize = true;
-            this.TLogin.Location = new System.Drawing.Point(27, 58);
+            this.TLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TLogin.Location = new System.Drawing.Point(24, 65);
             this.TLogin.Name = "TLogin";
-            this.TLogin.Size = new System.Drawing.Size(41, 13);
+            this.TLogin.Size = new System.Drawing.Size(59, 20);
             this.TLogin.TabIndex = 7;
             this.TLogin.Text = "Логин:";
             // 
             // TName
             // 
             this.TName.AutoSize = true;
-            this.TName.Location = new System.Drawing.Point(27, 29);
+            this.TName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TName.Location = new System.Drawing.Point(24, 30);
             this.TName.Name = "TName";
-            this.TName.Size = new System.Drawing.Size(32, 13);
+            this.TName.Size = new System.Drawing.Size(44, 20);
             this.TName.TabIndex = 6;
             this.TName.Text = "Имя:";
             // 
             // Confirmation
             // 
-            this.Confirmation.Location = new System.Drawing.Point(133, 114);
+            this.Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Confirmation.Location = new System.Drawing.Point(186, 132);
             this.Confirmation.Name = "Confirmation";
-            this.Confirmation.Size = new System.Drawing.Size(236, 20);
+            this.Confirmation.PasswordChar = '*';
+            this.Confirmation.Size = new System.Drawing.Size(267, 26);
             this.Confirmation.TabIndex = 13;
             // 
             // TConfirmation
             // 
             this.TConfirmation.AutoSize = true;
-            this.TConfirmation.Location = new System.Drawing.Point(27, 117);
+            this.TConfirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TConfirmation.Location = new System.Drawing.Point(24, 134);
             this.TConfirmation.Name = "TConfirmation";
-            this.TConfirmation.Size = new System.Drawing.Size(103, 13);
+            this.TConfirmation.Size = new System.Drawing.Size(156, 20);
             this.TConfirmation.TabIndex = 12;
             this.TConfirmation.Text = "Повторить пароль:";
             // 
             // Accept
             // 
-            this.Accept.Location = new System.Drawing.Point(165, 153);
+            this.Accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Accept.Location = new System.Drawing.Point(28, 176);
             this.Accept.Name = "Accept";
-            this.Accept.Size = new System.Drawing.Size(132, 23);
+            this.Accept.Size = new System.Drawing.Size(280, 32);
             this.Accept.TabIndex = 14;
             this.Accept.Text = "Зарегистрироваться";
             this.Accept.UseVisualStyleBackColor = true;
@@ -116,18 +118,29 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(303, 153);
+            this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Cancel.Location = new System.Drawing.Point(314, 176);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(66, 23);
+            this.Cancel.Size = new System.Drawing.Size(139, 32);
             this.Cancel.TabIndex = 15;
             this.Cancel.Text = "Отмена";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
+            // 
+            // Password
+            // 
+            this.Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Password.Location = new System.Drawing.Point(186, 96);
+            this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
+            this.Password.Size = new System.Drawing.Size(267, 26);
+            this.Password.TabIndex = 11;
             // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 192);
+            this.ClientSize = new System.Drawing.Size(486, 227);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Accept);
             this.Controls.Add(this.Confirmation);
@@ -140,7 +153,7 @@
             this.Controls.Add(this.TName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Registration";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Регистрация";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,8 +161,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.TextBox Login;
         private System.Windows.Forms.TextBox UserName;
         private System.Windows.Forms.Label TPassword;
@@ -159,5 +170,6 @@
         private System.Windows.Forms.Label TConfirmation;
         private System.Windows.Forms.Button Accept;
         private System.Windows.Forms.Button Cancel;
+        private System.Windows.Forms.TextBox Password;
     }
 }

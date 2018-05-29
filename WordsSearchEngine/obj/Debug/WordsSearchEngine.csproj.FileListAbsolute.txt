@@ -102,3 +102,7 @@ C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debu
 C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
 C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.pdfa.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.xtra.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CopyComplete

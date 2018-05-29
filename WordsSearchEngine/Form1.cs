@@ -3,11 +3,13 @@ using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Org.BouncyCastle.Crypto;
 
 namespace WordsSearchEngine
 {
@@ -165,7 +167,7 @@ namespace WordsSearchEngine
                 }
             }
 
-            if (WLenght.Checked)
+            if (WLength.Checked)
             {
                 Length(_resultList, LengthValue.Text);
                 foreach (string word in _resultList)
@@ -441,13 +443,13 @@ namespace WordsSearchEngine
 
         private void SearchInTextCriteria_CheckedChanged(object sender, EventArgs e)
         {
-            // Источник поска слов - заданный в окне текст.
+            // Источник поиска слов - заданный в окне текст.
             SetSourceAsText(true);
         }
 
         private void SearchInFilesCriteria_CheckedChanged(object sender, EventArgs e)
         {
-            // Источник поска слов - тексты файлов (т.е. не заданный в окне текст).
+            // Источник поиска слов - тексты файлов (т.е. не заданный в окне текст).
             SetSourceAsText(false);
         }
 
@@ -463,64 +465,95 @@ namespace WordsSearchEngine
             Browse.Enabled = !textSourceValue;
         }
 
-        private void CapitalizedW_CheckedChanged(object sender, EventArgs e)
+        private void CheckCriteriaIntegrity()
         {
-            SearchInFilesCriteria.Enabled = false;
+            if (CapitalizedW.Checked || AbbreviationW.Checked || EnglishWordsCriteria.Checked ||
+                WLength.Checked || WCombination.Checked)
+            {
+                GivenW.Enabled = false;
+                WordValue.Enabled = false;
+            }
+            else
+            {
+                GivenW.Enabled = true;
+                WordValue.Enabled = true;
+            }
+
+            if (!GivenW.Checked) return;
+            CapitalizedW.Enabled = false;
             AbbreviationW.Enabled = false;
             EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
+            WLength.Enabled = false;
+            LengthValue.Enabled = false;
             WCombination.Enabled = false;
-            GivenW.Enabled = false;
+            CombinationValue.Enabled = false;
         }
+
+        // Изменяем доступ к взаимоисключаеющимся критериям.
+        // Метод изменяет доступ только тогда, когда он задан, в противном случае - оставляет текущее значение.
+        private void ChangeCriteriaAccess(string capitalLetter = "", string abbreviation = "", string englishWords = "",
+            string length = "", string combination = "", string givenWord = "")
+        {
+            if (capitalLetter != "") CapitalizedW.Enabled = Convert.ToBoolean(capitalLetter);
+            if (abbreviation != "") AbbreviationW.Enabled = Convert.ToBoolean(abbreviation);
+            if (englishWords != "") EnglishWordsCriteria.Enabled = Convert.ToBoolean(englishWords);
+
+            if (length != "")
+            {
+                WLength.Enabled = Convert.ToBoolean(length);
+                LengthValue.Enabled = Convert.ToBoolean(length);
+            }
+
+            if (combination != "")
+            {
+                WCombination.Enabled = Convert.ToBoolean(combination);
+                CombinationValue.Enabled = Convert.ToBoolean(combination);
+            }
+
+            if (givenWord != "")
+            {
+                GivenW.Enabled = Convert.ToBoolean(givenWord);
+                WordValue.Enabled = Convert.ToBoolean(givenWord);
+            }
+
+            CheckCriteriaIntegrity();
+        }
+
+        private void CapitalizedW_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CapitalizedW.Checked)
+                ChangeCriteriaAccess(abbreviation: "false", givenWord: "false");
+            else ChangeCriteriaAccess(abbreviation: "true", givenWord: "true");
+        }
+
 
         private void AbbreviationW_CheckedChanged(object sender, EventArgs e)
         {
-            CapitalizedW.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
+            if(AbbreviationW.Checked)
+                ChangeCriteriaAccess("false", givenWord: "false", combination: "false");
+            else ChangeCriteriaAccess("true", givenWord: "true", combination: "true");
         }
 
         private void EnglishWordsCriteria_CheckedChanged(object sender, EventArgs e)
         {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
+            ChangeCriteriaAccess(givenWord: EnglishWordsCriteria.Checked ? "false" : "true");
         }
 
-        private void WLenght_CheckedChanged(object sender, EventArgs e)
+        private void WLength_CheckedChanged(object sender, EventArgs e)
         {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            WCombination.Enabled = false;
-            GivenW.Enabled = false;
+            ChangeCriteriaAccess(givenWord: WLength.Checked ? "false" : "true");
         }
 
         private void WCombination_CheckedChanged(object sender, EventArgs e)
         {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
-            GivenW.Enabled = false;
+            ChangeCriteriaAccess(givenWord: WCombination.Checked ? "false" : "true");
         }
 
         private void GivenW_CheckedChanged(object sender, EventArgs e)
         {
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLenght.Enabled = false;
-            WCombination.Enabled = false;
-            SearchInFilesCriteria.Enabled = false;
+            if (CapitalizedW.Checked)
+                ChangeCriteriaAccess("false", "false", "false", "false", "false");
+            else ChangeCriteriaAccess("true", "true", "true", "true", "true");
         }
 
         private void SaveText_Click(object sender, EventArgs e)
@@ -576,7 +609,7 @@ namespace WordsSearchEngine
                 if (CapitalizedW.Checked == true) { ResFileCrit[0] = "Слова с прописной буквы, "; }
                 if (AbbreviationW.Checked == true) { ResFileCrit[1] = "Аббревиатуры, "; }
                 if (EnglishWordsCriteria.Checked == true) { ResFileCrit[2] = "Английские слова, "; }
-                if (WLenght.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
+                if (WLength.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
                 if (WCombination.Checked == true) { ResFileCrit[4] = "Комбинация слов: " + CombinationValue.Text + ", "; }
                 if (GivenW.Checked == true) { ResFileCrit[5] = "Заданное слово: " + WordValue.Text + ", "; }
 
@@ -735,7 +768,7 @@ namespace WordsSearchEngine
                 if (CapitalizedW.Checked == true) { ResFileCrit[0] = "Слова с прописной буквы, "; }
                 if (AbbreviationW.Checked == true) { ResFileCrit[1] = "Аббревиатуры, "; }
                 if (EnglishWordsCriteria.Checked == true) { ResFileCrit[2] = "Английские слова, "; }
-                if (WLenght.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
+                if (WLength.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
                 if (WCombination.Checked == true) { ResFileCrit[4] = "Комбинация слов: " + CombinationValue.Text + ", "; }
                 if (GivenW.Checked == true) { ResFileCrit[5] = "Заданное слово: " + WordValue.Text + ", "; }
 

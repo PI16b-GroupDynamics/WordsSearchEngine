@@ -49,7 +49,7 @@
             this.CombinationValue = new System.Windows.Forms.TextBox();
             this.WCombination = new System.Windows.Forms.CheckBox();
             this.LengthValue = new System.Windows.Forms.TextBox();
-            this.WLenght = new System.Windows.Forms.CheckBox();
+            this.WLength = new System.Windows.Forms.CheckBox();
             this.EnglishWordsCriteria = new System.Windows.Forms.CheckBox();
             this.AbbreviationW = new System.Windows.Forms.CheckBox();
             this.CapitalizedW = new System.Windows.Forms.CheckBox();
@@ -204,7 +204,7 @@
             this.groupBox1.Controls.Add(this.CombinationValue);
             this.groupBox1.Controls.Add(this.WCombination);
             this.groupBox1.Controls.Add(this.LengthValue);
-            this.groupBox1.Controls.Add(this.WLenght);
+            this.groupBox1.Controls.Add(this.WLength);
             this.groupBox1.Controls.Add(this.EnglishWordsCriteria);
             this.groupBox1.Controls.Add(this.AbbreviationW);
             this.groupBox1.Controls.Add(this.CapitalizedW);
@@ -264,17 +264,17 @@
             this.LengthValue.TabIndex = 13;
             this.toolTip1.SetToolTip(this.LengthValue, "Поле для указания длины слова");
             // 
-            // WLenght
+            // WLength
             // 
-            this.WLenght.AutoSize = true;
-            this.WLenght.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WLenght.Location = new System.Drawing.Point(6, 109);
-            this.WLenght.Name = "WLenght";
-            this.WLenght.Size = new System.Drawing.Size(103, 19);
-            this.WLenght.TabIndex = 11;
-            this.WLenght.Text = "Длина слова:";
-            this.WLenght.UseVisualStyleBackColor = true;
-            this.WLenght.CheckedChanged += new System.EventHandler(this.WLenght_CheckedChanged);
+            this.WLength.AutoSize = true;
+            this.WLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WLength.Location = new System.Drawing.Point(6, 109);
+            this.WLength.Name = "WLength";
+            this.WLength.Size = new System.Drawing.Size(103, 19);
+            this.WLength.TabIndex = 11;
+            this.WLength.Text = "Длина слова:";
+            this.WLength.UseVisualStyleBackColor = true;
+            this.WLength.CheckedChanged += new System.EventHandler(this.WLength_CheckedChanged);
             // 
             // EnglishWordsCriteria
             // 
@@ -502,7 +502,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button SaveText;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox WLenght;
+        private System.Windows.Forms.CheckBox WLength;
         private System.Windows.Forms.CheckBox EnglishWordsCriteria;
         private System.Windows.Forms.CheckBox AbbreviationW;
         private System.Windows.Forms.CheckBox CapitalizedW;

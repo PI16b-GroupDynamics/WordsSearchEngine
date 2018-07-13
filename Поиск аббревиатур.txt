@@ -1,0 +1,68 @@
+FG FG DFG DFGH DFG FG FGH FG FG FG DFG DFGH DFG FG FGH FG  FG FG DFG DFGH DFG FG FGH FG  FG FG DFG DFGH DFG FG FGH FG FG FG DFG DFGH DFG FG FGH FG  FG FG DFG DFGH DFG FG FGH FG  FG FG DFG DFGH DFG FG FGH FG 
+Wgf Dgfd Dfff DFG SDF fgdg fhgfh Ffgf DFGR ER fggg ERTDrt Gioo
+hjhjh hgjhgjg jhghgjhg jhgjgjg jgj hgjg hg jhgjg j jgjgjg jhgjg hgjgj jghgjg jj
+
+SQLite.Net – это любительский проект с открытым программным кодом, ставящий своей целью реализацию работы с движком локально хранимых баз данных SQLite посредством обработки данных на уровне их объектных моделей. В идеологии SQLite.Net каждая модель данных – это отдельный объект, со своими свойствами и методами, низкоуровневую же часть работы с данными SQLite.Net берет на себя.
+Логика работы SQLite.Net реализована в файлах с исходным кодом SQLite.cs и SQLiteAsync.cs, которые добавляются непосредственно в состав разрабатываемого проекта. Библиотеки движка SQLite также должны быть включены в состав проекта, либо дистрибутив SQLite должен быть установлен в целевой системе.
+Простейший способ включить файлы SQLite.Net в состав своего проекта – воспользоваться менеджером пакетов NuGet, входящим в состав Visual Studio. Для этого необходимо открыть контекстное меню проекта в Solution Explorer, выбрать пункт Manage NuGet Packages…, далее в открывшемся окне NuGet переключиться в раздел Online/All и выполнить поиск по ключевому слову sqlite. Из результатов поиска вам необходимо выбрать и установить пакет sqlite-net, а также пакет System.Data.SQLite (x86/x64) в том случае, если вы ходите сразу добавить библиотеки SQLite в свой проект.
+
+SQLITE.NET – ЭТО ЛЮБИТЕЛЬСКИЙ ПРОЕКТ С ОТКРЫТЫМ ПРОГРАММНЫМ КОДОМ, СТАВЯЩИЙ СВОЕЙ ЦЕЛЬЮ РЕАЛИЗАЦИЮ РАБОТЫ С ДВИЖКОМ ЛОКАЛЬНО ХРАНИМЫХ БАЗ ДАННЫХ SQLITE ПОСРЕДСТВОМ ОБРАБОТКИ ДАННЫХ НА УРОВНЕ ИХ ОБЪЕКТНЫХ МОДЕЛЕЙ. В ИДЕОЛОГИИ SQLITE.NET КАЖДАЯ МОДЕЛЬ ДАННЫХ – ЭТО ОТДЕЛЬНЫЙ ОБЪЕКТ, СО СВОИМИ СВОЙСТВАМИ И МЕТОДАМИ, НИЗКОУРОВНЕВУЮ ЖЕ ЧАСТЬ РАБОТЫ С ДАННЫМИ SQLITE.NET БЕРЕТ НА СЕБЯ.
+ЛОГИКА РАБОТЫ SQLITE.NET РЕАЛИЗОВАНА В ФАЙЛАХ С ИСХОДНЫМ КОДОМ SQLITE.CS И SQLITEASYNC.CS, КОТОРЫЕ ДОБАВЛЯЮТСЯ НЕПОСРЕДСТВЕННО В СОСТАВ РАЗРАБАТЫВАЕМОГО ПРОЕКТА. БИБЛИОТЕКИ ДВИЖКА SQLITE ТАКЖЕ ДОЛЖНЫ БЫТЬ ВКЛЮЧЕНЫ В СОСТАВ ПРОЕКТА, ЛИБО ДИСТРИБУТИВ SQLITE ДОЛЖЕН БЫТЬ УСТАНОВЛЕН В ЦЕЛЕВОЙ СИСТЕМЕ.
+ПРОСТЕЙШИЙ СПОСОБ ВКЛЮЧИТЬ ФАЙЛЫ SQLITE.NET В СОСТАВ СВОЕГО ПРОЕКТА – ВОСПОЛЬЗОВАТЬСЯ МЕНЕДЖЕРОМ ПАКЕТОВ NUGET, ВХОДЯЩИМ В СОСТАВ VISUAL STUDIO. ДЛЯ ЭТОГО НЕОБХОДИМО ОТКРЫТЬ КОНТЕКСТНОЕ МЕНЮ ПРОЕКТА В SOLUTION EXPLORER, ВЫБРАТЬ ПУНКТ MANAGE NUGET PACKAGES…, ДАЛЕЕ В ОТКРЫВШЕМСЯ ОКНЕ NUGET ПЕРЕКЛЮЧИТЬСЯ В РАЗДЕЛ ONLINE/ALL И ВЫПОЛНИТЬ ПОИСК ПО КЛЮЧЕВОМУ СЛОВУ SQLITE. ИЗ РЕЗУЛЬТАТОВ ПОИСКА ВАМ НЕОБХОДИМО ВЫБРАТЬ И УСТАНОВИТЬ ПАКЕТ SQLITE-NET, А ТАКЖЕ ПАКЕТ SYSTEM.DATA.SQLITE (X86/X64) В ТОМ СЛУЧАЕ, ЕСЛИ ВЫ ХОДИТЕ СРАЗУ ДОБАВИТЬ БИБЛИОТЕКИ SQLITE В СВОЙ ПРОЕКТ.
+
+НАСТЯ
+0000225
+0000047
+0000019
+0000165
+0000703
+
+0000059
+0000023
+0000019
+0000082
+0000225
+
+var isAbbreviation = true;
+foreach (var word in words)
+{
+	for (int i = 0; i < word.Length && isAbbreviation; i++)
+        {
+        	if (!char.IsUpper(word[i]))
+                	isAbbreviation = false;
+        }
+
+        if (isAbbreviation)
+        _resultList.Add(word);
+}
+------------------------------------------------------------
+        void Abbreviation(List<string> words)
+        {
+            _resultList = new List<string>();
+            string tmp = "";
+
+            foreach (var word in words)
+            {
+                if (word.Trim() != "")
+                {
+                    foreach (var letter in word)
+                    {
+                        if (char.IsUpper(letter))
+                        {
+                            tmp = tmp + letter;
+                        }
+                        else
+                        {
+                            tmp = "";
+                            break;
+                        }
+                    }
+
+                    if (word == tmp)
+                    {
+                        _resultList.Add(tmp);
+                        tmp = "";
+                    }
+                }
+            }
+        }

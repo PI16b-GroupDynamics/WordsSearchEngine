@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
+=======
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.Login = new System.Windows.Forms.TextBox();
             this.UserName = new System.Windows.Forms.TextBox();
             this.TPassword = new System.Windows.Forms.Label();
@@ -61,7 +64,11 @@
             // 
             this.TPassword.AutoSize = true;
             this.TPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+<<<<<<< HEAD
             this.TPassword.Location = new System.Drawing.Point(24, 99);
+=======
+            this.TPassword.Location = new System.Drawing.Point(24, 102);
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.TPassword.Name = "TPassword";
             this.TPassword.Size = new System.Drawing.Size(71, 20);
             this.TPassword.TabIndex = 8;
@@ -71,7 +78,11 @@
             // 
             this.TLogin.AutoSize = true;
             this.TLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+<<<<<<< HEAD
             this.TLogin.Location = new System.Drawing.Point(24, 62);
+=======
+            this.TLogin.Location = new System.Drawing.Point(24, 65);
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.TLogin.Name = "TLogin";
             this.TLogin.Size = new System.Drawing.Size(59, 20);
             this.TLogin.TabIndex = 7;
@@ -81,7 +92,11 @@
             // 
             this.TName.AutoSize = true;
             this.TName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+<<<<<<< HEAD
             this.TName.Location = new System.Drawing.Point(24, 27);
+=======
+            this.TName.Location = new System.Drawing.Point(24, 30);
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.TName.Name = "TName";
             this.TName.Size = new System.Drawing.Size(44, 20);
             this.TName.TabIndex = 6;
@@ -100,11 +115,19 @@
             // 
             this.TConfirmation.AutoSize = true;
             this.TConfirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+<<<<<<< HEAD
             this.TConfirmation.Location = new System.Drawing.Point(24, 135);
             this.TConfirmation.Name = "TConfirmation";
             this.TConfirmation.Size = new System.Drawing.Size(156, 20);
             this.TConfirmation.TabIndex = 12;
             this.TConfirmation.Text = "Повторите пароль:";
+=======
+            this.TConfirmation.Location = new System.Drawing.Point(24, 134);
+            this.TConfirmation.Name = "TConfirmation";
+            this.TConfirmation.Size = new System.Drawing.Size(156, 20);
+            this.TConfirmation.TabIndex = 12;
+            this.TConfirmation.Text = "Повторить пароль:";
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
             // 
             // Accept
             // 
@@ -152,9 +175,13 @@
             this.Controls.Add(this.TPassword);
             this.Controls.Add(this.TLogin);
             this.Controls.Add(this.TName);
+<<<<<<< HEAD
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+=======
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.Name = "Registration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Регистрация";

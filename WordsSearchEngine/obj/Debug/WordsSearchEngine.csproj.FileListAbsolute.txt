@@ -30,7 +30,6 @@ C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\Wor
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
-C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form2.resources
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form3.resources
 C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
@@ -43,11 +42,75 @@ C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\Wor
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe.config
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
+<<<<<<< HEAD
+=======
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form5.resources
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Properties.Resources.resources
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.GenerateResource.cache
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe.config
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form2.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form3.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form5.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(sec)\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe.config
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form2.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form3.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(third)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form5.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.pdfa.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.xtra.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe.config
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\bin\Debug\WordsSearchEngine.pdb
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\bin\Debug\itextsharp.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\bin\Debug\itextsharp.pdfa.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\bin\Debug\itextsharp.xtra.dll
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form1.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form2.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form3.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form4.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Form5.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
+C:\Users\User\Documents\GitHub\WordsSearchEngine(prj)\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.pdfa.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\itextsharp.xtra.dll
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CopyComplete
+=======
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Users.db
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\EntityFramework.dll
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\EntityFramework.SqlServer.dll
@@ -61,6 +124,7 @@ F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\System.Data.SQLite.
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.csproj.CopyComplete
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Registration.resources
 F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.MainForm.resources
+<<<<<<< HEAD
 F:\ПИ\Проект с кодом для master (по состоянию на вчерашний вечер)\WordsSearchEngine\WordsSearchEngine\bin\Debug\Users.db
 F:\ПИ\Проект с кодом для master (по состоянию на вчерашний вечер)\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe.config
 F:\ПИ\Проект с кодом для master (по состоянию на вчерашний вечер)\WordsSearchEngine\WordsSearchEngine\bin\Debug\WordsSearchEngine.exe
@@ -124,3 +188,7 @@ F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSea
 F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.exe
 F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.pdb
 F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.AccountSettings.resources
+=======
+F:\ПИ\ГДК\WordsSearchEngine\WordsSearchEngine\obj\Debug\WordsSearchEngine.Authorization.resources
+>>>>>>> authorization
+>>>>>>> 56453015507048d3d1cee879304888963969a9cf

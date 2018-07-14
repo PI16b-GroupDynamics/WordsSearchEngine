@@ -13,6 +13,7 @@ namespace WordsSearchEngine
             InitializeComponent();
 
             ResetSettings();
+            SetSettingsFromFile(); // Загружаем настройки с предыдущего запуска приложения.
         }
 
         private bool _textName;
@@ -52,8 +53,8 @@ namespace WordsSearchEngine
                 TextName.Checked = _textName;
                 SpecifyTextName.Checked = _specifyTextName;
                 SpecifyCriteria.Checked = _specifyCriteria;
-                TextColor.Checked = _foreColor;
-                BackgroundColor.Checked = !_foreColor;
+                if(_foreColor) TextColor.Checked = true;
+                else BackgroundColor.Checked = true;
                 Path.Text = _path;
             }
         }
@@ -134,14 +135,21 @@ namespace WordsSearchEngine
                 {
                     switch (reader.Name)
                     {
-                        case "TextNameForFile": TextName.Checked = reader.ReadElementContentAsBoolean(); break;
-                        case "SpecifyTextName": SpecifyTextName.Checked = reader.ReadElementContentAsBoolean(); break;
-                        case "SpecifyCriteria": SpecifyCriteria.Checked = reader.ReadElementContentAsBoolean(); break;
-                        case "FilePath": Path.Text = reader.ReadElementContentAsString(); break;
+                        case "TextNameForFile": _textName = TextName.Checked = reader.ReadElementContentAsBoolean(); break;
+                        case "SpecifyTextName": _specifyTextName = SpecifyTextName.Checked = reader.ReadElementContentAsBoolean(); break;
+                        case "SpecifyCriteria": _specifyCriteria = SpecifyCriteria.Checked = reader.ReadElementContentAsBoolean(); break;
+                        case "FilePath": _path = Path.Text = reader.ReadElementContentAsString(); break;
                         case "ForeColor":
-                            if (reader.ReadElementContentAsBoolean())
+                            if (!reader.ReadElementContentAsBoolean())
+                            {
+                                _foreColor = false;
+                                BackgroundColor.Checked = true;
+                            }
+                            else
+                            {
+                                _foreColor = true;
                                 TextColor.Checked = true;
-                            else BackgroundColor.Checked = true;
+                            }
                             break;
                     }
                 }

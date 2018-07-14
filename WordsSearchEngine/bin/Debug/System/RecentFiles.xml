@@ -4,10 +4,15 @@
     <textfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Texts\5 правил английского языка.pdf</textfile>
     <textfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Texts\Правила английского языка.txt</textfile>
     <textfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Texts\Мастер и Маргарита. Глава 1 (Unicode).txt</textfile>
+    <textfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Results\Комбинации букв при в файлах папки Results.txt</textfile>
+    <textfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Texts\Братья Карамазовы. I Федор Павлович Карамазов.txt</textfile>
   </TextFiles>
   <ResultFiles>
     <resultfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Results\5 правил английского языка (поиск английских слов).txt</resultfile>
     <resultfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Results\Правила (комбинация букв ly, длина слова 3-15).txt</resultfile>
     <resultfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Results\Мастер и Маргарита. Глава 1 (комбинация букв по).txt</resultfile>
+    <resultfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Results\Английские слова в файлах папки Texts.txt</resultfile>
+    <resultfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Results\Комбинации букв при в файлах папки Results.txt</resultfile>
+    <resultfile>F:\ПИ\2 курс\ГДК\WordsSearchEngine\WordsSearchEngine\bin\Debug\Results\Комбинация букв оро в текстах Texts.txt</resultfile>
   </ResultFiles>
 </RecentFiles>

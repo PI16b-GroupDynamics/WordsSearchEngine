@@ -1,4 +1,6 @@
-﻿namespace WordsSearchEngine
+﻿using System;
+
+namespace WordsSearchEngine
 {
     partial class Authorization
     {
@@ -28,10 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Authorization));
-=======
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Login = new System.Windows.Forms.TextBox();
@@ -56,11 +55,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-<<<<<<< HEAD
             this.label3.Location = new System.Drawing.Point(26, 67);
-=======
             this.label3.Location = new System.Drawing.Point(27, 70);
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 20);
             this.label3.TabIndex = 2;
@@ -82,10 +78,6 @@
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(221, 26);
             this.Password.TabIndex = 5;
-<<<<<<< HEAD
-=======
-            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
             // 
             // SignUp
             // 
@@ -121,7 +113,7 @@
             this.CreateAccount.TabIndex = 9;
             this.CreateAccount.Text = "Создайте его!";
             this.CreateAccount.Click += new System.EventHandler(this.CreateAccount_Click);
-            this.CreateAccount.MouseEnter += new System.EventHandler(this.CreateAccount_MouseEnter);
+            this.CreateAccount.MouseEnter += new EventHandler(this.CreateAccount_MouseEnter);
             this.CreateAccount.MouseLeave += new System.EventHandler(this.CreateAccount_MouseLeave);
             // 
             // label1
@@ -148,11 +140,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-<<<<<<< HEAD
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-=======
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
             this.Name = "Authorization";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Авторизация";

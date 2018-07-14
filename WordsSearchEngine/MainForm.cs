@@ -1,8 +1,6 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
+﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -11,21 +9,10 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-=======
-<<<<<<< HEAD:WordsSearchEngine/Form1.cs
-using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-=======
-using System.Data.SQLite;
->>>>>>> authorization:WordsSearchEngine/MainForm.cs
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Org.BouncyCastle.Crypto;
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
+using Image = System.Drawing.Image;
 
 namespace WordsSearchEngine
 {
@@ -34,11 +21,10 @@ namespace WordsSearchEngine
         public MainForm()
         {
             InitializeComponent();
-<<<<<<< HEAD
 
             MainMenu.Renderer = new MenuStripRenderer();
             AccountMenu.Renderer = new MenuStripRenderer();
-            
+
             _recentTexts = new AdvancedStack();
             _recentResults = new AdvancedStack();
 
@@ -47,12 +33,12 @@ namespace WordsSearchEngine
             UpdateRecentResults();
 
             SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
-            _separators = new[] {' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '«', '»', '%', '\\', '/'};
+            _separators = new[]
+                {' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '«', '»', '%', '\\', '/'};
             _resultList = new List<string>();
             _resultfileList = new List<string>();
-            
+
             _settingsForm = new SettingsForm();
-            _settingsForm.SetSettingsFromFile(); // Загружаем настройки с предыдущего запуска приложения.
 
             var welcomeScreen = new WelcomeScreen();
             welcomeScreen.ShowDialog();
@@ -70,7 +56,7 @@ namespace WordsSearchEngine
         private readonly AdvancedStack _recentResults; // Список недавно сохранённых результатом поиска.
 
         private enum DataType { Text, Result } // Перечисление типа данных (текст или результат поиска),
-        // с которым работает (открывает, сохраняет) пользователь.
+                                               // с которым работает (открывает, сохраняет) пользователь.
 
         // Собственный класс функций рисования ToolStrip объектов.
         // Переопределён метод отрисовки заднего фона меню, цвета шрифта и разделителя.
@@ -99,7 +85,8 @@ namespace WordsSearchEngine
             {
                 if (!(e.Item is ToolStripSeparator))
                     base.OnRenderSeparator(e);
-                e.Graphics.DrawLine(new Pen(SystemColors.ControlDark), 0, e.Item.Height / 2, e.Item.Width, e.Item.Height / 2);
+                e.Graphics.DrawLine(new Pen(SystemColors.ControlDark), 0, e.Item.Height / 2, e.Item.Width,
+                    e.Item.Height / 2);
             }
         }
 
@@ -195,8 +182,16 @@ namespace WordsSearchEngine
         #endregion
 
         #region Реализация события нажатия на кнопку "Найти" и сопутствующие методы.
+
         private bool IsReadyToSearch()
         {
+            if (GetCheckedCriteriaNumber() == 0)
+            {
+                MessageBox.Show(@"Выберите хотя бы один критерий поиска слов!", @"Words Search Engine",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
             if (LengthCriteria.Checked)
             {
                 if (LengthValue.Text == "")
@@ -240,113 +235,42 @@ namespace WordsSearchEngine
                 return false;
             }
 
-            if (!GivenWordCriteria.Checked || WordValue.Text != "") return true;
-
-            MessageBox.Show(@"Введите слово для поиска.", @"Words Search Engine", MessageBoxButtons.OK,
-                MessageBoxIcon.Exclamation);
-            return false;
-
-=======
-<<<<<<< HEAD:WordsSearchEngine/Form1.cs
-            _authorizationForm = new Form2();
-
-            _settingsForm = new Form4();
-            _settingsForm.checkBox1.Checked = false;
-            _settingsForm.checkBox4.Checked = false;
-            _settingsForm.checkBox5.Checked = true;
-            _settingsForm.textBox1.Text = Application.StartupPath + @"\Results";
-
-            ToolsFile();
-=======
-
-            _authorizationForm = new Authorization { Owner = this };
-            _settingsForm = new Form4();
-            
->>>>>>> authorization:WordsSearchEngine/MainForm.cs
-            SetSourceAsText(true); // По умолчанию установлен поиск слов в заданном тексте.
-            _separators = new[] { ' ', '\n', '\r', ',', '.', '(', ')', '!', '?', '-', ';', ':', '"', '%', '\\', '/' };
-            _resultList = new List<string>();
-            _resultfileList = new List<string>();
-            _originaltxt = new Dictionary<int, string>();
-        }
-
-<<<<<<< HEAD:WordsSearchEngine/Form1.cs
-        private readonly Form2 _authorizationForm;
-        Form4 _settingsForm;
-=======
-        public static SQLiteConnection UserDb;
-
-        private readonly Authorization _authorizationForm;
-        private readonly Form4 _settingsForm;
->>>>>>> authorization:WordsSearchEngine/MainForm.cs
-
-        private readonly char[] _separators; // Список возможных разделителей в исходном тексте.
-        private List<string> _resultList;
-        private List<string> _resultfileList;
-        private Dictionary<int, string> _originaltxt;
-
-<<<<<<< HEAD:WordsSearchEngine/Form1.cs
-        public void ToolsFile()
-=======
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            // Устанавливаем связь с базой данных.
-            UserDb = new SQLiteConnection("Data Source=Users.db; Version=3");
-        }
-
-        private void SignUp_Click(object sender, EventArgs e)
->>>>>>> authorization:WordsSearchEngine/MainForm.cs
-        {
-            string path = @"System";
-            string fullPath = Path.GetFullPath(path) + "\\Tools.dat";
-            string toRes = Application.StartupPath + @"\Results";
-            string[] tools = new string[] { "false", "false", "true", toRes };
-            // This text is added only once to the file.
-            if (!File.Exists(fullPath))
+            if (GivenWordCriteria.Checked && WordValue.Text != "")
             {
-                // Create a file to write to.
-                File.WriteAllLines(fullPath, tools, Encoding.UTF8);
+                MessageBox.Show(@"Введите слово для поиска.", @"Words Search Engine", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                return false;
             }
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _authorizationForm.ShowDialog();
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
+            if (SearchInFilesCriteria.Checked)
+            {
+                if (Directory.Exists(SourceDirectory.Text))
+                    return true;
+                    MessageBox.Show(@"Укажите правильный каталог для поиска слов в файлах.",
+                        @"Words Search Engine", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+            }
+            if(OriginalText.Text == "") MessageBox.Show(@"Введите текст для поиска слов.",
+                @"Words Search Engine", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return false;
         }
 
         private void Search_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             if (!IsReadyToSearch()) return;
 
             SetButtonAccess(false);
             DeselectText(Color.Black, Color.White);
             FoundWords.Clear();
-=======
-            Search.Enabled = false;
-            FileToolStripMenuItem.Enabled = false;
-            ParamsToolStripMenuItem.Enabled = false;
-            HelpToolStripMenuItem.Enabled = false;
-            button1.Enabled = false;
-            OpenText.Enabled = false;
-            SaveText.Enabled = false;
-            SaveResult.Enabled = false;
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
 
             if (SearchInTextCriteria.Checked)
             {
                 // Получаем список всех слов исходного текста.
                 _resultList = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToList();
-<<<<<<< HEAD
-=======
-                // _originaltxt = OriginalText.Text.Split(_separators, StringSplitOptions.RemoveEmptyEntries).ToDictionary();
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
                 _resultfileList.Clear();
 
                 if (CheckAllCriteria()) // Проверяем текст на наличие слов.
                 {
-<<<<<<< HEAD
                     FoundWords.BackColor = Color.White;
                     SaveResult.Enabled = true;
                     // Выводим список найденных слов/наименований файлов в окно результата.
@@ -365,19 +289,6 @@ namespace WordsSearchEngine
                     MessageBox.Show(@"В тексте нет слов, удовлетворяющим критериям поиска.",
                         @"Words Search Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-=======
-                    FoundWords.Clear();
-                    // Выводим список найденных слов/наименований файлов в окно результата.
-                    MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    foreach (string word in _resultList)
-                    {
-                        FoundWords.Text += word + Environment.NewLine;
-                    }
-                }
-                else
-                    MessageBox.Show(@"В тексте нет слов, удовлетворяющим критериям поиска",
-                        @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
             }
             else
             {
@@ -386,7 +297,6 @@ namespace WordsSearchEngine
 
                 if (_resultfileList.Count != 0)
                 {
-<<<<<<< HEAD
                     FoundWords.BackColor = Color.White;
                     SaveResult.Enabled = true;
                     // Выводим список наименований файлов в окно результата.
@@ -408,35 +318,10 @@ namespace WordsSearchEngine
 
             SetButtonAccess(true);
             _searchHasJustFinished = true;
-=======
-                    FoundWords.Clear();
-                    MessageBox.Show(@"Поиск слов закончен", @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // Выводим список наименований файлов в окно результата.
-                    foreach (string word in _resultfileList)
-                    {
-                        FoundWords.Text += word + Environment.NewLine;
-                    }
-                }
-                else
-                    MessageBox.Show(@"В текстах файлов, находящийся в указанном каталоге,"
-                        + @" нет слов, удовлетворяющим критериям поиска",
-                        @"Результаты поиска", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            Search.Enabled = true;
-            FileToolStripMenuItem.Enabled = true;
-            ParamsToolStripMenuItem.Enabled = true;
-            HelpToolStripMenuItem.Enabled = true;
-            button1.Enabled = true;
-            OpenText.Enabled = true;
-            SaveText.Enabled = true;
-            SaveResult.Enabled = true;
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
         }
 
         private bool CheckAllCriteria()
         {
-<<<<<<< HEAD
             // Проверяем текст на критерии поиска.
             if (CapitalizedLetterCriteria.Checked)
                 CapitalizedWords(_resultList);
@@ -455,87 +340,6 @@ namespace WordsSearchEngine
 
             if (GivenWordCriteria.Checked)
                 GivenWord(_resultList, WordValue.Text);
-=======
-            // Проверяем текст на критерии поиска
-            int index = 0;
-            if (CapitalizedW.Checked)
-            {
-                CapitalizedWords(_resultList);
-                foreach (string word in _resultList)
-                {
-                    index = OriginalText.Text.IndexOf(word);
-                    OriginalText.SelectionStart = index;
-                    OriginalText.SelectionLength = word.Length;
-                    OriginalText.SelectionColor = Color.Aqua;
-                    OriginalText.SelectionLength = 0;
-                }
-            }
-
-            if (AbbreviationW.Checked)
-            {
-                Abbreviation(_resultList);
-                foreach (string word in _resultList)
-                {
-                    index = OriginalText.Text.IndexOf(word);
-                    OriginalText.SelectionStart = index;
-                    OriginalText.SelectionLength = word.Length;
-                    OriginalText.SelectionColor = Color.DarkBlue;
-                    OriginalText.SelectionLength = 0;
-                }
-            }
-
-            if (EnglishWordsCriteria.Checked)
-            {
-                SearchEnglishWords(_resultList);
-                foreach (string word in _resultList)
-                {
-                    index = OriginalText.Text.IndexOf(word);
-                    OriginalText.SelectionStart = index;
-                    OriginalText.SelectionLength = word.Length;
-                    OriginalText.SelectionColor = Color.ForestGreen;
-                    OriginalText.SelectionLength = 0;
-                }
-            }
-
-            if (WLength.Checked)
-            {
-                Length(_resultList, LengthValue.Text);
-                foreach (string word in _resultList)
-                {
-                    index = OriginalText.Text.IndexOf(word);
-                    OriginalText.SelectionStart = index;
-                    OriginalText.SelectionLength = word.Length;
-                    OriginalText.SelectionColor = Color.Gold;
-                    OriginalText.SelectionLength = 0;
-                }
-            }
-
-            if (WCombination.Checked)
-            {
-                Combination(_resultList, CombinationValue.Text);
-                foreach (string word in _resultList)
-                {
-                    index = OriginalText.Text.IndexOf(word);
-                    OriginalText.SelectionStart = index;
-                    OriginalText.SelectionLength = word.Length;
-                    OriginalText.SelectionColor = Color.LightBlue;
-                    OriginalText.SelectionLength = 0;
-                }
-            }
-
-            if (GivenW.Checked)
-            {
-                GivenWord(_resultList, WordValue.Text);
-                foreach (string word in _resultList)
-                {
-                    index = OriginalText.Text.IndexOf(word);
-                    OriginalText.SelectionStart = index;
-                    OriginalText.SelectionLength = word.Length;
-                    OriginalText.SelectionColor = Color.Maroon;
-                    OriginalText.SelectionLength = 0;
-                }
-            }
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
 
             // Если список найденных слов не пуст, возвращаем true (поиск был успешным).
             return _resultList.Count != 0;
@@ -543,17 +347,10 @@ namespace WordsSearchEngine
 
         private void SearchInFiles()
         {
-<<<<<<< HEAD
             var files = new List<string>();
 
             // Поиск в файлах осуществляется только в файлах с расширением ".txt".
             foreach (var file in Directory.GetFiles(SourceDirectory.Text).ToList())
-=======
-            List<string> files = new List<string>();
-
-            // Поиск в файлах осуществляется только в файлах с расширением ".txt".
-            foreach (string file in Directory.GetFiles(SourceDirectory.Text).ToList())
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
             {
                 if (file.EndsWith(".txt"))
                     files.Add(file.Replace(SourceDirectory.Text + "\\", ""));
@@ -599,11 +396,7 @@ namespace WordsSearchEngine
             */
         }
 
-<<<<<<< HEAD
         private void AppendResultFilesList(string file, List<string> wordList)
-=======
-        void AppendResultFilesList(string file, List<string> wordList)
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
         {
             _resultfileList.Add(file);
 
@@ -613,7 +406,6 @@ namespace WordsSearchEngine
             _resultfileList.Add("");
         }
 
-<<<<<<< HEAD
         #endregion
 
         #region Выделение найденных слов и выделение текста.
@@ -665,7 +457,7 @@ namespace WordsSearchEngine
         }
 
         private bool IsSeparator(char c) => _separators.Any(separator => c == separator);
-        
+
         private void HighlightWordsWithColor(Color color)
         {
             // Если выбраны критерии поиска "Заданное слово" или "Комбинация букв",
@@ -706,20 +498,13 @@ namespace WordsSearchEngine
         #endregion
 
         #region Отслеживание выбора критериев на форме с проверкой их на совместимость.
-        
+
         private void GivenWordCriteria_CheckedChanged(object sender, EventArgs e)
         {
             if (GivenWordCriteria.Checked)
-            {
-                if (OriginalText.Text != "") Search.Enabled = true;
                 // Если выбран критерий "заданное слово", то у остальных критерияев снимаем отметку и ограничиваем доступ.
                 ChangeCriteriaAccess("false", "false", "false", "false", "false");
-            }
-            else
-            {
-                Search.Enabled = false;
-                ChangeCriteriaAccess("true", "true", "true", "true", "true");
-            }
+            else ChangeCriteriaAccess("true", "true", "true", "true", "true");
         }
 
         // Проверка на совместимость выбранных критериев.
@@ -746,15 +531,8 @@ namespace WordsSearchEngine
             // Огриничиваем доступ к критерию "Заданное слово", если выбран хотя бы один какой-то критерий.
             if (CapitalizedLetterCriteria.Checked || AbbreviationCriteria.Checked || EnglishWordsCriteria.Checked
                 || LengthCriteria.Checked || CombinationCriteria.Checked)
-            {
-                if (OriginalText.Text != "") Search.Enabled = true;
                 ChangeCriteriaAccess(givenWord: "false");
-            }
-            else
-            {
-                ChangeCriteriaAccess(givenWord: "true");
-                Search.Enabled = false;
-            }
+            else ChangeCriteriaAccess(givenWord: "true");
         }
 
         // Изменяем доступ к взаимоисключающимся критериям.
@@ -803,7 +581,9 @@ namespace WordsSearchEngine
                     if (Convert.ToBoolean(givenWord) == false) GivenWordCriteria.Checked = false;
                 }
             }
-            catch (FormatException) { }
+            catch (FormatException)
+            {
+            }
         }
 
         #endregion
@@ -833,9 +613,11 @@ namespace WordsSearchEngine
                 UpdateButtonAccess();
                 AddRecentText(path);
                 UpdateRecentTexts();
-                
+
                 var user = Users.CurrentUser != null ? " " + Users.CurrentUser.Login : "";
-                if (Users.CurrentUser != null) Log.WriteEvent(DateTime.Now, "Открытие текста", $"Пользователь{user} открыл текст из файла {path}.");
+                if (Users.CurrentUser != null)
+                    Log.WriteEvent(DateTime.Now, "Открытие текста",
+                        $"Пользователь{user} открыл текст из файла {path}.");
             }
             catch (Exception ex)
             {
@@ -921,7 +703,8 @@ namespace WordsSearchEngine
 
                 var name = type == DataType.Text ? "текст" : "результат поиска";
                 var user = Users.CurrentUser != null ? " " + Users.CurrentUser.Login : "";
-                Log.WriteEvent(DateTime.Now, title, $"Пользователь{user} сохранил {name} в файл {saveFileDialog.FileName}.");
+                Log.WriteEvent(DateTime.Now, title,
+                    $"Пользователь{user} сохранил {name} в файл {saveFileDialog.FileName}.");
                 return saveFileDialog.FileName;
             }
             catch (Exception ex)
@@ -937,8 +720,10 @@ namespace WordsSearchEngine
         private void SaveTextInFile()
         {
             var length = OriginalText.Text.Length;
-            var filepath = SaveInFile(Application.StartupPath + @"\Texts", DataType.Text, TextName.Text != "" ? TextName.Text
-                        : OriginalText.Text.Substring(0, length > 30 ? 30 : length), string.Join(Environment.NewLine, OriginalText.Lines));
+            var filepath = SaveInFile(Application.StartupPath + @"\Texts", DataType.Text, TextName.Text != ""
+                    ? TextName.Text
+                    : OriginalText.Text.Substring(0, length > 30 ? 30 : length),
+                string.Join(Environment.NewLine, OriginalText.Lines));
 
             if (filepath == null) return;
 
@@ -962,15 +747,23 @@ namespace WordsSearchEngine
 
             // В зависимости от установленных настроек определяем название текста,
             // которое будет использоваться в названии файла.
-            if (_settingsForm.TextName.Checked)
-            { if ((fileName = GetTextName()) == null) return; }
-            else fileName = OriginalText.Text.Substring(0, OriginalText.Text.Length > 30 ? 30 : OriginalText.Lines[0].Length);
-
-            // Получаем название текста для указания его в файле результата.
-            if (_settingsForm.SpecifyTextName.Checked)
+            if (SearchInFilesCriteria.Checked) fileName = SourceDirectory.Text;
+            else
             {
-                if ((textName = GetTextName()) == null) return;
-                textName = textName.Insert(0, "Название текста: ");
+                if (_settingsForm.TextName.Checked)
+                {
+                    if ((fileName = GetTextName()) == null) return;
+                }
+                else
+                    fileName = OriginalText.Text.Substring(0,
+                        OriginalText.Text.Length > 30 ? 30 : OriginalText.Lines[0].Length);
+
+                // Получаем название текста для указания его в файле результата.
+                if (_settingsForm.SpecifyTextName.Checked)
+                {
+                    if ((textName = GetTextName()) == null) return;
+                    textName = textName.Insert(0, "Название текста: ");
+                }
             }
 
             // Формируем строку, содержащую критерии поиска слов, которую будем указывать в файле результата.
@@ -981,7 +774,8 @@ namespace WordsSearchEngine
                 if (AbbreviationCriteria.Checked) criteriaList.Append("аббревиатуры, ");
                 if (EnglishWordsCriteria.Checked) criteriaList.Append("английские слова, ");
                 if (LengthCriteria.Checked) criteriaList.Append("длина слов: " + LengthValue.Text + ", ");
-                if (CombinationCriteria.Checked) criteriaList.Append("комбинация букв: " + CombinationValue.Text + ", ");
+                if (CombinationCriteria.Checked)
+                    criteriaList.Append("комбинация букв: " + CombinationValue.Text + ", ");
                 if (GivenWordCriteria.Checked) criteriaList.Append("заданное слово: " + WordValue.Text + ", ");
 
                 criteriaList.Replace(", ", "", criteriaList.Length - 2, 2);
@@ -1011,7 +805,7 @@ namespace WordsSearchEngine
             XmlWriter writer = null;
             try
             {
-                var settings = new XmlWriterSettings { Indent = true, ConformanceLevel = ConformanceLevel.Auto};
+                var settings = new XmlWriterSettings {Indent = true, ConformanceLevel = ConformanceLevel.Auto};
                 writer = XmlWriter.Create(@"System\RecentFiles.xml", settings);
 
                 writer.WriteStartDocument();
@@ -1026,8 +820,8 @@ namespace WordsSearchEngine
 
                 // Записываем пути к недавно сохранённым результатам.
                 writer.WriteStartElement("ResultFiles");
-                for(var i = _recentResults.Count - 1; i >= 0; i--)
-                   writer.WriteElementString("resultfile", _recentResults.ToArray()[i]);
+                for (var i = _recentResults.Count - 1; i >= 0; i--)
+                    writer.WriteElementString("resultfile", _recentResults.ToArray()[i]);
                 writer.WriteEndElement();
 
                 writer.WriteEndElement();
@@ -1099,7 +893,8 @@ namespace WordsSearchEngine
                 if (Users.CurrentUser != null)
                     if (type == DataType.Text)
                         Users.CurrentUser.Texts.Remove(filepath);
-                    else Users.CurrentUser.Results.Remove(filepath);
+                    else
+                        Users.CurrentUser.Results.Remove(filepath);
                 else
                 {
                     if (type == DataType.Text)
@@ -1111,17 +906,18 @@ namespace WordsSearchEngine
                     LoadTextFromFile(GetFilePathBeforeLoading("Определение нового пути к файлу", DataType.Text));
             }
 
-            if(type == DataType.Text) UpdateRecentTexts();
+            if (type == DataType.Text) UpdateRecentTexts();
             else UpdateRecentResults();
         }
 
         // Открытие недавнего файла.
         // Запускаем в новом потоке, чтобы не зависало меню и форма в целом при возникновении исключений.
-        private void LoadRecentTextsToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void LoadRecentTextsToolStripMenuItem_DropDownItemClicked(object sender,
+            ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Text == @"Очистить список недавних текстов")
             {
-                if(Users.CurrentUser != null)
+                if (Users.CurrentUser != null)
                     Users.CurrentUser.Texts.Clear();
                 else _recentTexts.Clear();
                 UpdateRecentTexts();
@@ -1130,7 +926,10 @@ namespace WordsSearchEngine
             {
                 new Thread(() =>
                 {
-                    Invoke((MethodInvoker) delegate { OpenWithFileExistenceCheck(e.ClickedItem.Text, DataType.Text); });
+                    Invoke((MethodInvoker) delegate
+                    {
+                        OpenWithFileExistenceCheck(e.ClickedItem.Text, DataType.Text);
+                    });
                 }).Start();
             }
         }
@@ -1148,16 +947,21 @@ namespace WordsSearchEngine
             else
             {
                 new Thread(() =>
-            {
-                Invoke((MethodInvoker) delegate { OpenWithFileExistenceCheck(e.ClickedItem.Text, DataType.Result); });
-            }).Start();
+                {
+                    Invoke((MethodInvoker) delegate
+                    {
+                        OpenWithFileExistenceCheck(e.ClickedItem.Text, DataType.Result);
+                    });
+                }).Start();
+            }
         }
-    }
 
         // Загрузка текста из файла.
-        private void OpenText_Click(object sender, EventArgs e) => LoadTextFromFile(GetFilePathBeforeLoading("Загрузка текста", DataType.Text));
+        private void OpenText_Click(object sender, EventArgs e) =>
+            LoadTextFromFile(GetFilePathBeforeLoading("Загрузка текста", DataType.Text));
 
-        private void LoadFromFileToolStripMenuItem_Click(object sender, EventArgs e) => LoadTextFromFile(GetFilePathBeforeLoading("Загрузка текста", DataType.Text));
+        private void LoadFromFileToolStripMenuItem_Click(object sender, EventArgs e) =>
+            LoadTextFromFile(GetFilePathBeforeLoading("Загрузка текста", DataType.Text));
 
         // Сохранение текста в файл.
         private void SaveText_Click(object sender, EventArgs e) => SaveTextInFile();
@@ -1175,7 +979,8 @@ namespace WordsSearchEngine
         // Справка.
         private void InstructionStripMenuItem_Click(object sender, EventArgs e) => Process.Start(@"HTML\Spravka.htm");
 
-        private void AboutProgrammToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start(@"HTML\Spravka.htm");
+        private void AboutProgrammToolStripMenuItem_Click(object sender, EventArgs e) =>
+            Process.Start(@"HTML\Spravka.htm");
 
         // Вход.
         private void SignIn_Click(object sender, EventArgs e)
@@ -1192,9 +997,26 @@ namespace WordsSearchEngine
             else AccountMenu.Show(SignIn, new Point(0, SignIn.Height));
         }
 
-        private void SignUp_MouseEnter(object sender, EventArgs e) { SignIn.ForeColor = Color.White; }
+        private void ChangeSignInButtonStyle(Color foreColor, Color backColor)
+        {
+            SignIn.ForeColor = foreColor;
+            SignIn.BackColor = backColor;
+        }
 
-        private void SignUp_MouseLeave(object sender, EventArgs e) { SignIn.ForeColor = Color.Black; }
+        private void SignIn_MouseEnter(object sender, EventArgs e)
+        { ChangeSignInButtonStyle(Color.White, SystemColors.ControlDarkDark); }
+
+        private void SignIn_MouseLeave(object sender, EventArgs e)
+        { ChangeSignInButtonStyle(Color.Black, Color.Gainsboro); }
+
+        private void AccountMenu_Opening(object sender, CancelEventArgs e)
+        { ChangeSignInButtonStyle(Color.White, SystemColors.ControlDarkDark); }
+
+        private void AccountMenu_MouseMove(object sender, MouseEventArgs e)
+        { ChangeSignInButtonStyle(Color.White, SystemColors.ControlDarkDark); }
+
+        private void AccountMenu_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+        { ChangeSignInButtonStyle(Color.Black, Color.Gainsboro); }
 
         private void SignOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1256,6 +1078,7 @@ namespace WordsSearchEngine
                 LoadRecentTextsToolStripMenuItem.Enabled = false;
                 return;
             }
+
             if (!LoadRecentTextsToolStripMenuItem.Enabled) LoadRecentTextsToolStripMenuItem.Enabled = true;
             LoadRecentTextsToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
             LoadRecentTextsToolStripMenuItem.DropDownItems.Add("Очистить список недавних текстов");
@@ -1279,7 +1102,7 @@ namespace WordsSearchEngine
                 return;
             }
 
-            if(!LoadRecentResultsToolStripMenuItem.Enabled) LoadRecentResultsToolStripMenuItem.Enabled = true;
+            if (!LoadRecentResultsToolStripMenuItem.Enabled) LoadRecentResultsToolStripMenuItem.Enabled = true;
             LoadRecentResultsToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
             LoadRecentResultsToolStripMenuItem.DropDownItems.Add("Очистить список недавних результатов");
         }
@@ -1290,8 +1113,20 @@ namespace WordsSearchEngine
             FileToolStripMenuItem.Enabled = accessFlag;
             ParamsToolStripMenuItem.Enabled = accessFlag;
             HelpToolStripMenuItem.Enabled = accessFlag;
-            OpenText.Enabled = accessFlag;
-            SaveText.Enabled = accessFlag;
+            if (accessFlag)
+            {
+                if (SearchInTextCriteria.Checked)
+                {
+                    OpenText.Enabled = true;
+                    SaveText.Enabled = true;
+                }
+            }
+            else
+            {
+                OpenText.Enabled = false;
+                SaveText.Enabled = false;
+            }
+           
             if (!accessFlag) SaveResult.Enabled = false;
         }
 
@@ -1305,9 +1140,9 @@ namespace WordsSearchEngine
             OriginalText.Select(0, 0);
             OriginalText.Enabled = textSourceValue;
             OpenText.Enabled = textSourceValue;
-            if (OriginalText.Text != "") SaveText.Enabled = textSourceValue;
             SourceDirectory.Enabled = !textSourceValue;
             Browse.Enabled = !textSourceValue;
+            UpdateButtonAccess();
         }
 
         // Источник поиска слов - заданный в поле текст.
@@ -1315,14 +1150,13 @@ namespace WordsSearchEngine
 
         // Источник поиска слов - тексты файлов (т.е. не заданный в окне текст).
         private void SearchInFilesCriteria_CheckedChanged(object sender, EventArgs e) => SetSourceAsText(false);
-        
+
         private void Browse_Click(object sender, EventArgs e)
         {
             if (FolderBrowserDialog.ShowDialog() == DialogResult.OK)
                 SourceDirectory.Text = FolderBrowserDialog.SelectedPath;
         }
 
-        
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             // Горячие клавиши для начала поиска Ctrl + B)
@@ -1335,7 +1169,8 @@ namespace WordsSearchEngine
             _settingsForm.SaveSettingsToFile();
             SaveRecentFiles();
             if (Users.CurrentUser != null)
-                Log.WriteEvent(DateTime.Now, "Деавторизация", $"Пользователь {Users.CurrentUser.Login} вышел из системы.");
+                Log.WriteEvent(DateTime.Now, "Деавторизация",
+                    $"Пользователь {Users.CurrentUser.Login} вышел из системы.");
             Log.WriteEvent(DateTime.Now, "Закрытие приложения", "Приложение закрыто.");
         }
 
@@ -1344,18 +1179,12 @@ namespace WordsSearchEngine
             // Если слова в тексте были выделены (после поиска), то отменяем выделение при нажатии какой-либо клавиши.
             if (_searchHasJustFinished) DeselectText(Color.Black, Color.White);
 
-            // Делаем недоступной кнопку "Сохранить текст", если поле для ввода текста пустое.
-            if (OriginalText.Text != "")
+            if (SearchInTextCriteria.Checked)
             {
-                SaveText.Enabled = true;
-                // Делаем доступной кнопку "Найти", если выбран хотя бы один критерий.
-                Search.Enabled = GetCheckedCriteriaNumber() > 0;
+                // Делаем недоступной кнопку "Сохранить текст", если поле для ввода текста пустое.
+                SaveText.Enabled = OriginalText.Text != "";
             }
-            else
-            {
-                SaveText.Enabled = false;
-                Search.Enabled = false;
-            }
+            else SaveText.Enabled = false;
         }
 
         private void OriginalText_KeyUp(object sender, KeyEventArgs e) => UpdateButtonAccess();
@@ -1366,550 +1195,33 @@ namespace WordsSearchEngine
                 e.Handled = true;
         }
 
+
+        // Метод установки заднего фона кнопки.
+        private static void SetButtonImage(Button button, string name)
+        {
+            if(button == null) return;
+            if (File.Exists(@"Images\" + name)) button.BackgroundImage = Image.FromFile(@"Images\" + name);
+        }
+
+        // Сменяем задний фон кнопки, когда она становится недоступной.
+        private void SaveText_EnabledChanged(object sender, EventArgs e) => SetButtonImage(SaveText,
+            SaveText.Enabled ? "save.png" : "save_not_enabled.png");
+        private void SaveResult_EnabledChanged(object sender, EventArgs e) => SetButtonImage(SaveResult,
+            SaveText.Enabled ? "save.png" : "save_not_enabled.png");
+        private void OpenText_EnabledChanged(object sender, EventArgs e) => SetButtonImage(OpenText,
+            OpenText.Enabled ? "load.png" : "load_not_enabled.png");
+
+        // Сменяем задний фон кнопки при наведении.
+        private void SaveText_MouseEnter(object sender, EventArgs e) => SetButtonImage(SaveText, "save_hover.png");
+        private void SaveResult_MouseEnter(object sender, EventArgs e) => SetButtonImage(SaveResult, "save_hover.png");
+        private void OpenText_MouseEnter(object sender, EventArgs e) => SetButtonImage(OpenText, "load_hover.png");
+
+        // Сменяем задний фон кнопки при выходе указателя мыши за пределы элемента управления.
+        private void SaveText_MouseLeave(object sender, EventArgs e) => SetButtonImage(SaveText, "save.png");
+        private void SaveResult_MouseLeave(object sender, EventArgs e) => SetButtonImage(SaveResult, "save.png");
+        private void OpenText_MouseLeave(object sender, EventArgs e) => SetButtonImage(OpenText, "load.png");
+
         #endregion
-=======
-        void CapitalizedWords(List<string> words)
-        {
-            _resultList = new List<string>();
-
-            foreach (var s in words)
-            {
-                if (s.Trim() != "")
-                {
-                    if (char.IsUpper(s[0]))
-                    {
-                        _resultList.Add(s);
-                    }
-                }
-            }
-        }
-
-        void Abbreviation(List<string> words)
-        {
-            _resultList = new List<string>();
-            string tmp = "";
-
-            foreach (var word in words)
-            {
-                if (word.Trim() != "")
-                {
-                    foreach (var letter in word)
-                    {
-                        if (char.IsUpper(letter))
-                        {
-                            tmp = tmp + letter;
-                        }
-                        else
-                        {
-                            tmp = "";
-                            break;
-                        }
-                    }
-
-                    if (word == tmp)
-                    {
-                        _resultList.Add(tmp);
-                        tmp = "";
-                    }
-                }
-            }
-        }
-
-        private void SearchEnglishWords(List<string> words)
-        {
-            _resultList = new List<string>();
-            foreach (string word in words)
-            {
-                // Проверяем, является ли первая буква символом английского алфавита.
-                if (word[0] >= 65 && word[0] <= 90 || word[0] >= 97 && word[0] <= 122)
-                    _resultList.Add(word);
-            }
-        }
-
-        void Length(List<string> words, string len)
-        {
-            _resultList = new List<string>();
-            // Проверяем, не ввёел ли пользователь диапазон длин.
-            if (len.IndexOf('-') == -1)
-            {
-                // Поиск слов по одному значению длины.
-                foreach (var s in words)
-                {
-                    if (s.Trim() != "")
-                    {
-                        if (s.Length == Convert.ToInt32(len))
-                        {
-                            _resultList.Add(s);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                // Поиск слов, чья длина колеблется в заданном диапазоне.
-                int lowBound = Convert.ToInt32(len.Substring(0, len.IndexOf('-')));
-                int upperBound = Convert.ToInt32(len.Substring(len.IndexOf('-') + 1));
-
-                _resultList = new List<string>();
-                foreach (string word in words)
-                {
-                    if (word.Length >= lowBound && word.Length <= upperBound)
-                        _resultList.Add(word);
-                }
-            }
-        }
-
-        void Combination(List<string> words, string sl)
-        {
-            _resultList = new List<string>();
-            Char chrS = sl[0];
-            Char chrE = sl[sl.Length - 1];
-
-            foreach (var s in words)
-            {
-                string tmp = s;
-                if (tmp.Trim() != "")
-                {
-                    int startIndex = tmp.IndexOf(chrS);
-                    if (startIndex >= 0)
-                    {
-                        int endIndex = tmp.LastIndexOf(chrE);
-                        if (endIndex >= 0)
-                        {
-                            int len = endIndex - startIndex + 1;
-                            string tmp1 = tmp.Substring(startIndex, len);
-                            if (tmp1.Length >= sl.Length)
-                            {
-                                if (tmp1 == sl)
-                                {
-                                    _resultList.Add(s);
-                                }
-                                else
-                                {
-                                    startIndex = tmp1.IndexOf(chrS);
-                                    string tmp2 = tmp1.Substring(startIndex, sl.Length);
-                                    if (tmp2 == sl)
-                                    {
-                                        _resultList.Add(s);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private void GivenWord(List<string> words, string sl)
-        {
-            _resultList = new List<string>();
-            int ecx = 0;
-            foreach (var s in words)
-            {
-                if (s.Trim() != "")
-                {
-                    if (s == sl)
-                    {
-                        _resultList.Add(s);
-                        ecx++;
-                    }
-                }
-            }
-
-            string mes = "Количество вхождений заданного слова в текст: " + Convert.ToString(ecx);
-            MessageBox.Show(mes);
-        }
-
-        private void Browse_Click(object sender, EventArgs e)
-        {
-            if (FolderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                SourceDirectory.Text = FolderBrowserDialog.SelectedPath;
-            }
-        }
-
-        private void OpenText_Click(object sender, EventArgs e)
-        {
-            openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                OriginalText.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
-            }
-        }
-
-        private void SearchInTextCriteria_CheckedChanged(object sender, EventArgs e)
-        {
-            // Источник поиска слов - заданный в окне текст.
-            SetSourceAsText(true);
-        }
-
-        private void SearchInFilesCriteria_CheckedChanged(object sender, EventArgs e)
-        {
-            // Источник поиска слов - тексты файлов (т.е. не заданный в окне текст).
-            SetSourceAsText(false);
-        }
-
-        private void SetSourceAsText(bool textSourceValue)
-        {
-            // Изменяем доступ к элементам управления в зависимости
-            // от источника поиска (заданный текст или тексты в файлах).
-            TextName.Enabled = textSourceValue;
-            OriginalText.Enabled = textSourceValue;
-            OpenText.Enabled = textSourceValue;
-            SaveText.Enabled = textSourceValue;
-            SourceDirectory.Enabled = !textSourceValue;
-            Browse.Enabled = !textSourceValue;
-        }
-
-        // Проверка на совместимость выбранных критериев.
-        private void CheckCriteriaIntegrity()
-        {
-            if (CapitalizedW.Checked || AbbreviationW.Checked || EnglishWordsCriteria.Checked ||
-                WLength.Checked || WCombination.Checked)
-            {
-                GivenW.Enabled = false;
-                WordValue.Enabled = false;
-            }
-            else
-            {
-                GivenW.Enabled = true;
-                WordValue.Enabled = true;
-            }
-
-            if (!GivenW.Checked) return;
-            CapitalizedW.Enabled = false;
-            AbbreviationW.Enabled = false;
-            EnglishWordsCriteria.Enabled = false;
-            WLength.Enabled = false;
-            LengthValue.Enabled = false;
-            WCombination.Enabled = false;
-            CombinationValue.Enabled = false;
-        }
-
-        // Изменяем доступ к взаимоисключаеющимся критериям.
-        // Метод изменяет доступ только тогда, когда он задан, в противном случае - оставляет текущее значение.
-        private void ChangeCriteriaAccess(string capitalLetter = "", string abbreviation = "", string englishWords = "",
-            string length = "", string combination = "", string givenWord = "")
-        {
-            if (capitalLetter != "") CapitalizedW.Enabled = Convert.ToBoolean(capitalLetter);
-            if (abbreviation != "") AbbreviationW.Enabled = Convert.ToBoolean(abbreviation);
-            if (englishWords != "") EnglishWordsCriteria.Enabled = Convert.ToBoolean(englishWords);
-
-            if (length != "")
-            {
-                WLength.Enabled = Convert.ToBoolean(length);
-                LengthValue.Enabled = Convert.ToBoolean(length);
-            }
-
-            if (combination != "")
-            {
-                WCombination.Enabled = Convert.ToBoolean(combination);
-                CombinationValue.Enabled = Convert.ToBoolean(combination);
-            }
-
-            if (givenWord != "")
-            {
-                GivenW.Enabled = Convert.ToBoolean(givenWord);
-                WordValue.Enabled = Convert.ToBoolean(givenWord);
-            }
-
-            CheckCriteriaIntegrity();
-        }
-
-        private void CapitalizedW_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CapitalizedW.Checked)
-                ChangeCriteriaAccess(abbreviation: "false", givenWord: "false");
-            else ChangeCriteriaAccess(abbreviation: "true", givenWord: "true");
-        }
-
-
-        private void AbbreviationW_CheckedChanged(object sender, EventArgs e)
-        {
-            if(AbbreviationW.Checked)
-                ChangeCriteriaAccess("false", givenWord: "false", combination: "false");
-            else ChangeCriteriaAccess("true", givenWord: "true", combination: "true");
-        }
-
-        private void EnglishWordsCriteria_CheckedChanged(object sender, EventArgs e)
-        {
-            ChangeCriteriaAccess(givenWord: EnglishWordsCriteria.Checked ? "false" : "true");
-        }
-
-        private void WLength_CheckedChanged(object sender, EventArgs e)
-        {
-            ChangeCriteriaAccess(givenWord: WLength.Checked ? "false" : "true");
-        }
-
-        private void WCombination_CheckedChanged(object sender, EventArgs e)
-        {
-            ChangeCriteriaAccess(givenWord: WCombination.Checked ? "false" : "true");
-        }
-
-        private void GivenW_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CapitalizedW.Checked)
-                ChangeCriteriaAccess("false", "false", "false", "false", "false");
-            else ChangeCriteriaAccess("true", "true", "true", "true", "true");
-        }
-
-        private void SaveText_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-
-            sfd.Title = "Сохранить как PDF";
-            sfd.Filter = "(*.pdf)|*.pdf";
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                if (OriginalText.Text != "")
-                {
-                    iTextSharp.text.Document doc = new iTextSharp.text.Document();
-                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
-                    doc.Open();
-                    doc.Add(new iTextSharp.text.Paragraph(OriginalText.Text));
-                    doc.Close();
-                    MessageBox.Show("Текст успешно сохранен в PDF", "Оповещение");
-                }
-                else
-                {
-                    MessageBox.Show("Поле пусто. Сохранять в PDF нечего", "Оповещение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void SaveResult_Click(object sender, EventArgs e)
-        {
-            string ResFileName = null;
-            string ResFileNameIn = null;
-            string ResFileCritStr = null;
-            string[] ResFileCrit = new string[6];
-            if (_settingsForm.checkBox1.Checked == true)
-            {
-                if (TextName.Text != "")
-                {
-                    ResFileName = TextName.Text;
-                }
-            }
-
-            if (_settingsForm.checkBox4.Checked == true)
-            {
-                if (TextName.Text != "")
-                {
-                    ResFileNameIn = "Имя текста: " + TextName.Text;
-                }
-            }
-
-            if (_settingsForm.checkBox5.Checked == true)
-            {
-                if (CapitalizedW.Checked == true) { ResFileCrit[0] = "Слова с прописной буквы, "; }
-                if (AbbreviationW.Checked == true) { ResFileCrit[1] = "Аббревиатуры, "; }
-                if (EnglishWordsCriteria.Checked == true) { ResFileCrit[2] = "Английские слова, "; }
-                if (WLength.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
-                if (WCombination.Checked == true) { ResFileCrit[4] = "Комбинация слов: " + CombinationValue.Text + ", "; }
-                if (GivenW.Checked == true) { ResFileCrit[5] = "Заданное слово: " + WordValue.Text + ", "; }
-
-                for (int i = 0; i < ResFileCrit.Length; i++)
-                {
-                    if (ResFileCrit[i] == null)
-                    {
-                        ResFileCrit[i] = "-, ";
-                    }
-                }
-
-                ResFileCritStr = "Критерии поиска: " + string.Concat(ResFileCrit);
-            }
-
-            Document document = new Document();
-            try
-            {
-                string FileName = @"\Text.pdf";
-                if (_settingsForm.checkBox1.Checked == true) { FileName = @"\" + TextName.Text + ".pdf"; }
-                string FilePath = _settingsForm.textBox1.Text + FileName;
-                BaseFont baseFont = BaseFont.CreateFont(Application.StartupPath + @"\System\ARIAL.TTF", Encoding.GetEncoding(1251).BodyName, BaseFont.NOT_EMBEDDED);
-                iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
-                using (FileStream stream = new FileStream(FilePath, FileMode.Create))
-                {
-                    PdfWriter.GetInstance(document, stream);
-                    document.Open();
-                    if (_settingsForm.checkBox4.Checked == true) { document.Add(new Paragraph(ResFileNameIn, font)); }
-                    if (_settingsForm.checkBox5.Checked == true) { document.Add(new Paragraph(ResFileCritStr, font)); }
-                    document.Add(new Paragraph(FoundWords.Text, font));
-                    document.Close();
-
-                    MessageBox.Show("Результирующий файл " + FileName + " сохранен", "Оповещение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch (DocumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        private void ExitToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (DialogResult.Yes == MessageBox.Show(@"Вы действительно хотите выйти ?",
-                        @"Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-            {
-                Application.Exit();
-            }
-        }
-
-        private void ParamsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _settingsForm.ShowDialog();
-        }
-
-        private void InstructionStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start(Application.StartupPath + "//HTML/Spravka.htm");
-        }
-
-        private void ProgrammToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start(Application.StartupPath + "//HTML/About_prg.htm");
-        }
-
-        private void LoadFromFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openFileDialog1 = new OpenFileDialog {Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*"};
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                OriginalText.Text = File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
-            }
-        }
-
-        private void SaveInFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-
-            sfd.Title = "Сохранить как PDF";
-            sfd.Filter = "(*.pdf)|*.pdf";
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                if (OriginalText.Text != "")
-                {
-                    iTextSharp.text.Document doc = new iTextSharp.text.Document();
-                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
-                    doc.Open();
-                    doc.Add(new iTextSharp.text.Paragraph(OriginalText.Text));
-                    doc.Close();
-                    MessageBox.Show("Текст успешно сохранен в PDF", "Оповещение");
-                }
-                else
-                {
-                    MessageBox.Show("Поле пусто. Сохранять в PDF нечего", "Оповещение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void SaveInFileToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-
-            sfd.Title = "Сохранить как PDF";
-            sfd.Filter = "(*.pdf)|*.pdf";
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                if (OriginalText.Text != "")
-                {
-                    iTextSharp.text.Document doc = new iTextSharp.text.Document();
-                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
-                    doc.Open();
-                    doc.Add(new iTextSharp.text.Paragraph(OriginalText.Text));
-                    doc.Close();
-                    MessageBox.Show("Текст успешно сохранен в PDF", "Оповещение");
-                }
-                else
-                {
-                    MessageBox.Show("Поле пусто. Сохранять в PDF нечего", "Оповещение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void SaveInFileResultText_Click(object sender, EventArgs e)
-        {
-            string ResFileName = null;
-            string ResFileNameIn = null;
-            string ResFileCritStr = null;
-            string[] ResFileCrit = new string[6];
-            if (_settingsForm.checkBox1.Checked == true)
-            {
-                if (TextName.Text != "")
-                {
-                    ResFileName = TextName.Text;
-                }
-            }
-
-            if (_settingsForm.checkBox4.Checked == true)
-            {
-                if (TextName.Text != "")
-                {
-                    ResFileNameIn = "Имя текста: " + TextName.Text;
-                }
-            }
-
-            if (_settingsForm.checkBox5.Checked == true)
-            {
-                if (CapitalizedW.Checked == true) { ResFileCrit[0] = "Слова с прописной буквы, "; }
-                if (AbbreviationW.Checked == true) { ResFileCrit[1] = "Аббревиатуры, "; }
-                if (EnglishWordsCriteria.Checked == true) { ResFileCrit[2] = "Английские слова, "; }
-                if (WLength.Checked == true) { ResFileCrit[3] = "Длина слов: " + LengthValue.Text + ", "; }
-                if (WCombination.Checked == true) { ResFileCrit[4] = "Комбинация слов: " + CombinationValue.Text + ", "; }
-                if (GivenW.Checked == true) { ResFileCrit[5] = "Заданное слово: " + WordValue.Text + ", "; }
-
-                for (int i = 0; i < ResFileCrit.Length; i++)
-                {
-                    if (ResFileCrit[i] == null)
-                    {
-                        ResFileCrit[i] = "-, ";
-                    }
-                }
-
-                ResFileCritStr = "Критерии поиска: " + string.Concat(ResFileCrit);
-            }
-
-            Document document = new Document();
-            try
-            {
-                string FileName = @"\Text.pdf";
-                if (_settingsForm.checkBox1.Checked == true) { FileName = @"\" + TextName.Text + ".pdf"; }
-                string FilePath = _settingsForm.textBox1.Text + FileName;
-                BaseFont baseFont = BaseFont.CreateFont(Application.StartupPath + @"\System\ARIAL.TTF", Encoding.GetEncoding(1251).BodyName, BaseFont.NOT_EMBEDDED);
-                iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
-                using (FileStream stream = new FileStream(FilePath, FileMode.Create))
-                {
-                    PdfWriter.GetInstance(document, stream);
-                    document.Open();
-                    if (_settingsForm.checkBox4.Checked == true) { document.Add(new Paragraph(ResFileNameIn, font)); }
-                    if (_settingsForm.checkBox5.Checked == true) { document.Add(new Paragraph(ResFileCritStr, font)); }
-                    document.Add(new Paragraph(FoundWords.Text, font));
-                    document.Close();
-
-                    MessageBox.Show("Результирующий файл " + FileName + " сохранен", "Оповещение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch (DocumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
->>>>>>> 56453015507048d3d1cee879304888963969a9cf
     }
+
 }

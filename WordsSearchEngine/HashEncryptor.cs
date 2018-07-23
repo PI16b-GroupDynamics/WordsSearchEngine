@@ -55,7 +55,7 @@ namespace WordsSearchEngine
         public static bool SlowEquals(byte[] a, byte[] b)
         {
             if (a == null || b == null) return false;
-            var difference = a.Length ^ a.Length;
+            var difference = a.Length ^ b.Length;
             for (var i = 0; i < a.Length && i < b.Length; i++)
                 difference |= a[i] ^ b[i];
             return difference == 0;

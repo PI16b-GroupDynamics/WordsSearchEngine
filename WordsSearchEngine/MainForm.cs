@@ -235,7 +235,7 @@ namespace WordsSearchEngine
                 return false;
             }
 
-            if (GivenWordCriteria.Checked && WordValue.Text != "")
+            if (GivenWordCriteria.Checked && WordValue.Text == "")
             {
                 MessageBox.Show(@"Введите слово для поиска.", @"Words Search Engine", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -250,7 +250,9 @@ namespace WordsSearchEngine
                         @"Words Search Engine", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
             }
-            if(OriginalText.Text == "") MessageBox.Show(@"Введите текст для поиска слов.",
+
+            if (OriginalText.Text != "") return true;
+            MessageBox.Show(@"Введите текст для поиска слов.",
                 @"Words Search Engine", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
